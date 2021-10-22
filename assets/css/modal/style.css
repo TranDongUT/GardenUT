@@ -1,0 +1,254 @@
+.modal-detail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  display: none;
+}
+
+.modal-show{
+  display: flex;
+}
+
+.modal-container{
+  width: 800px;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.modal-close-btn{
+  text-align: right;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px ;
+  background-color: #ecb34f5c;
+}
+
+.modal-close-btn > i{
+  display: inline-block;
+  font-size: 20px;
+  padding: 8px;
+  opacity: 0.5;
+  
+  
+}
+
+.modal-close-btn i:hover{
+  opacity: 1;
+  cursor: pointer;
+}
+
+.modal-content{
+  display: flex;
+
+}
+
+.modal-img{
+  padding: 8px;
+}
+
+.modal-text{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 20px;
+}
+
+.modal-text h2{
+  font-size: 36px;
+  margin-bottom: 8px;
+}
+
+.modal-text p{
+  font-size: 18px;
+}
+
+.modal-btn{
+  margin-top: 28px;
+}
+
+.modal-btn input{
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+  font-size: 20px;
+}
+
+.modal-btn button{
+  border: 2px solid #70c745;
+  padding: 8px 10px;
+  cursor: pointer;
+  margin-left: 20px;
+  border-radius: 4px;
+  background-color: #70c745;
+  color: #fff;
+  font-size: 20px;
+}
+
+.modal-btn button:hover{
+  background-color: #fff;
+  color: #333;
+}
+
+
+.modal .product {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 100%;
+}
+
+.modal .product .images, .modal .product .infos {
+  width: 48%;
+  height: 100%;
+}
+
+.modal .product .images .slider {
+  width: 100%;
+  height: 70%;
+  position: relative;
+}
+
+.modal .product .images .slider img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 50%;
+}
+
+.modal .product .images .img-slider {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  width: 90%;
+  height: 30%;
+  padding-left: 30px;
+}
+
+.modal .product .images .img-slider .image {
+  width: 22%;
+  height: 80%;
+  border: 1px solid #D84727;
+  border-radius: 5px;
+  background-color: #F1DDC9;
+  position: relative;
+}
+
+.modal .product .images .img-slider .image img {
+  width: 60%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.modal .product .images .img-slider .image:hover, .modal .product .images .img-slider .image.active {
+  background: #ccc;
+}
+
+.modal .product .infos {
+  position: relative;
+}
+
+.modal .product .infos h1 {
+  padding-top: 20px;
+  font-size: 46px;
+  width: 90%;
+  line-height: 60px;
+}
+
+.modal .product .infos .reviews i {
+  color: gold;
+  padding-right: 5px;
+  padding: 20px 0;
+}
+
+.modal .product .infos .cost h3 {
+  font-size: 30px;
+  padding: 10px 0;
+  display: inline-block;
+}
+
+.modal .product .infos .cost h3.old {
+  margin-right: 30px;
+  font-size: 24px;
+  color: #777777;
+  position: relative;
+}
+
+.modal .product .infos .cost h3.old::after {
+  content: "";
+  position: absolute;
+  width: 103%;
+  height: 2px;
+  left: -2px;
+  top: 50%;
+  background: #D84727;
+}
+
+.modal .product .infos .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.modal .product .infos .info h5 {
+  margin: 20px 50px 20px 0;
+  font-size: 18px;
+  color: gray;
+}
+
+.modal .product .infos .info h5.active {
+  color: black;
+}
+
+.modal .product .infos .content {
+  width: 90%;
+  padding-bottom: 20px;
+}
+
+.modal .product .infos .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  position: absolute;
+  bottom: 50px;
+}
+
+.modal .product .infos .buttons .btn2 {
+  margin-right: 20px;
+}
+/*# sourceMappingURL=style.css.map */
+
+
