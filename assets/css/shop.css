@@ -13,10 +13,13 @@ html{
 /* dùng chung */
 .row{
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
     margin-left: -15px;
     margin-right: -15px;
+}
+
+.row-justify{
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .col-1{
@@ -27,6 +30,16 @@ html{
     width: 50%;
 }
 
+.col-2-left{
+   max-width: 25%;
+   padding: 0 15px;
+}
+
+.col-2-right{
+    width: 100%;
+    padding: 0 15px;
+ }
+
 .col-3{
     width: 33.3333%;
 }
@@ -35,6 +48,9 @@ html{
     width: 25%;
 }
 
+.mb-8{
+    margin-top: 8px;
+}
 
 /*  */
 
@@ -47,8 +63,8 @@ html{
 #header{
     position: fixed;
     height: 132px;
-    width: 100%;
     top: 0;
+    width: 100%;
     padding: 8px 76px;
     z-index: 1;
 }
@@ -170,7 +186,6 @@ html{
     box-shadow: 0 0 8px;
     display: block;
     list-style: none;
-    transition-duration: 500ms;
     animation:showdown 0.6s;
 }
 
@@ -209,7 +224,6 @@ html{
     box-shadow: 0 0 8px;
 }
 
-
 /* Slider */
 
 #slider{
@@ -224,9 +238,9 @@ html{
 #slider .silder-bg{
     position: relative;
     top: 0px;
-    padding-top: 50%;
     width: 100%;
-    background: url('../image/slider/1.jpg');
+    padding-top: 20%;
+    background: url('../image/background/shop.jpg');
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -250,169 +264,84 @@ html{
     }
 }
 
-#slider .slider-text{
-    position: absolute;
-    margin-top: 132px;
-    width: 80%;
-    text-align: center;
-    color: #fff;
-}
 
-.slider-text h1{
-    font-size: 45px;
-    font-weight: bold;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-}
-
-.slider-text p{
-    font-size: 18px;
-    letter-spacing: 1.6;
-    margin-bottom: 50px;
-}
-
-#slider .slider-btn{
-    position: absolute;
-    bottom: 20%;
-}
-
-#slider .slider-btn > a{
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    line-height: 46px;
-    padding: 0 20px;
-    font-weight: 600;
-    border: 2px solid #70c745;
-    border-radius: 2px;
-}
-
-.slider-btn .get-started{
-    color: #fff;
-    background-color: #70c745;
-}
-.slider-btn .get-started:hover{
-    background-color: #70c74500;
-    color: #70c745;
-}
-.slider-btn .contact-us{
-    color: #70c745;
-}
-
-
-/* dùng chung các section */
 #content{
 }
 
 #content .content-section{
-    width: 930px;
+    width: 1110px;
     padding: 60px 16px;   
     margin-left: auto;
     margin-right: auto;
 }
 
-.section-heading{
-    text-align: center;
-    width: 100%;
-    font-size: 30px;
-    font-weight: 600;
-    margin-bottom: 16px;
+/* sidebar */
+
+.shop-sidebar{
+   
 }
 
-.section-sub-heading{
-    text-align: center;
-    font-size: 16px;
-    color: #707070;
-    margin-bottom: 32px;
-}
-
-/* about */
-
-.about-top{
-    font-size: 16px;
-    color: #707070;
-    text-align: center;
-    margin-bottom: 28px;
-}
-
-.about-list{
-    margin-top: 16px;
-}
-.about-item{
-    width: 210px;
-    padding: 4px 8px;
-}
-
-.about-item:hover{
-    cursor: pointer;
-    transition-duration: 500ms;
-    transform: scale(1.1);
-    background-color: #ecb34f5c;
-}
-
-.about-img{
-    margin-bottom: 30px;
-}
-
-.about-heading{
-    margin-bottom: 8px;
-    font-size: 20px;
-    font-weight: 500;
-}
-
-.about-text{
-    font-size: 16px;
-    font-weight: 400;
-    color: #707070;
-    text-align: left;
-}
-
-/* Arrivals */
-
-#new-arrival{
-    width: 100%;
-    background-color: rgb(242, 244, 245);
-}
-
-.arrival-list{
+.shop-widget{
     margin-bottom: 50px;
 }
 
-.arrival-item{
+.shop-widget .widget-head{
+    margin-bottom: 20px ;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.shop-widget .custom-control{
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+/* items list */
+
+#shop-item-list{
+    width: 100%;
+    border: 1px solid #707070;
+}
+
+.shop-item-list{
+    margin-bottom: 50px;
+}
+
+.shop-item{
     width: 210px;
     background-color: #fff;
 }
 
-.arrival-item:hover {
+.shop-item:hover {
     cursor: pointer;
     transition-duration: 500ms;
-    transform: scale(1.1);
     box-shadow: 0 5px 30px 0 rgb(0 0 0 / 15%);
 }
 
-.arrival-img img{
+.shop-item-img img{
     width: 100%;
     display: block;
 }
 
-.arrival-info{
+.shop-item-info{
     background-color: rgb(242, 244, 245);
     text-align: center;
     color: #707070;
     font-size: 18px;
 }
 
-.arrival-name:hover{
+.shop-item-name:hover{
     color: #70c745;
     cursor: pointer;
 }
 
-.arrival-cost{
+.shop-item-cost{
     color: #000;
     font-size: larger;
 }
 
-.arrival-item .add-to-cart-btn{
+.shop-item .add-to-cart-btn{
     width: 100%;
     text-align: center;
     font-size: 18px;
@@ -422,69 +351,44 @@ html{
     opacity: 0;
 }
 
-.arrival-item:hover .add-to-cart-btn{
+.shop-item:hover .add-to-cart-btn{
     cursor: pointer;
-    transition-duration: 500ms;
     opacity: 1;
 }
 
-.view-all-btn{
-    display: block;
-    cursor: pointer;
+.pagination{
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.pagination .page-btn{
+    float: right;
+    width: 46px;
+    height: 46px;
+    margin: 0 10px;
+    color: #333;
+    background-color: #f5f5f5;
+    border: 1px solid #ebebeb;
+    font-size: 18px;
+    line-height: 44px;
     text-align: center;
-    padding: 0 20px;
-    line-height: 42px;
-    font-weight: 600;
-    text-decoration: none;
-    color: #fff;
-    background-color: #70c745;
-    border: 1px solid #70c745;   
-}
-
-
-.view-all-btn:hover {
-    background-color: rgb(242, 244, 245);
-    color: #70c745;
-}
-
-/* contact */
-.contact{
-    justify-content: space-between;
-}
-
-.contact form{
-    width: 100%;
-}
-
-.contact form input, textarea{
-    padding: 15px 10px;
-    font-size: 16px;
-    margin-bottom: 20px;
-    outline-color:  #70c745;
-}
-
-.contact textarea{
-    width: 95%;
-}
-
-.submit-btn{
-    margin-top: 10px;
     cursor: pointer;
-    text-align: center;
-    width: 150px;
-    background-color: #70c745;
-    border: 1px solid #70c745;
-    color: #fff;
-    font-weight: 600;
 }
 
-.submit-btn:hover{
-    background-color: rgb(242, 244, 245);
-    color: #70c745;
+.pagination .page-btn:hover{
+
+    border-color: #70c745;
+        background-color: #70c745;
+        color: #ffffff;
 }
 
 
-/* footer */
+
+
+
+
+
 
 #footer{
     position: relative;
@@ -553,3 +457,4 @@ html{
 .footer-contact span{
     color: #707070;
 }
+

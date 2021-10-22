@@ -5,8 +5,10 @@ $$ = document.querySelectorAll.bind(document);
 const header = $('#header');
 const items = $$('.arrival-item');
 const modalDetailItem = $('.modal-detail')
+const addToCartBtn = $$('.add-to-cart-btn');
+const cartQuantity = $('.cart-quantity');
 
-console.log(modalDetailItem);
+console.log(cartQuantity.innerText);
 /* Scroll header */
 document.onscroll = function(){
     if(window.scrollY >= 200){
@@ -24,3 +26,11 @@ items.forEach(function(item,index){
         modalDetailItem.classList.add('modal-show');
     }
 });
+
+/* add to cart btn */
+addToCartBtn.forEach(function(btn){
+    btn.onclick = function(){
+        old = Number(cartQuantity.innerText);
+        cartQuantity.innerText = old+=1;
+    }
+})
