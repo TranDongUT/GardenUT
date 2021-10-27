@@ -23,7 +23,7 @@ onLoadCartNumbers();
 function renderCartItems(cartItems){
     const htmls = cartItems.map(function(item){
         return `<hr>
-                <div class="item">
+                <div class="item item-${item.id_sanpham}">
                     <div class="item-info">
                         <img src="${item.link}" alt="">
                         <div class="name"><h4>${item.ten_sanpham}</h4></div>
@@ -39,7 +39,7 @@ function renderCartItems(cartItems){
                     <div class="item-total">
                         <p>${item.quantity * item.gia}</p>
                     </div>
-                    <div class="item-trash">
+                    <div onclick="removeItem(${item.id_sanpham})" class="item-trash">
                         <i class="ti-trash"></i>
                     </div>
                 </div>
@@ -51,7 +51,11 @@ function renderCartItems(cartItems){
 function convertCartToArray(cartItems,callback){
     let arrItems = [];
     for(var i in cartItems){
-        arrItems.push(cartItems[i]);
+        if(cartItems[i].quantity == 0){
+            continue;
+        }else{
+            arrItems.push(cartItems[i]);
+        }
     }
     return  arrItems;
 }
@@ -84,4 +88,14 @@ function totalCost(cartItems){
     return cartItems.reduce(function(pre,current){
         return pre + (current.gia * current.quantity); 
     },0)
+}
+
+
+function removeItem(id_sanpham){
+    document.querySelector('.item-'+id_sanpham).remove();
+    cartItems = localStorage.getItem('productInCart');
+    cartItems = JSON.parse(cartItems);
+    cartItems[id_sanpham].quantity = 0;
+    localStorage.setItem('productInCart',JSON.stringify(cartItems));
+    cartApp();
 }
