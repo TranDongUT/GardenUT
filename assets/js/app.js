@@ -97,5 +97,4 @@ function setItems(sanpham){
     }
     localStorage.setItem('productInCart',JSON.stringify(cartItems));
 }
-
 onLoadCartNumbers();

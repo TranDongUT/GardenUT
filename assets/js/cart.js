@@ -1,3 +1,12 @@
+document.onscroll = function(){
+    if(window.scrollY >= 200){
+        header.style.backgroundColor = 'black';
+    }
+    else{
+        header.style.backgroundColor = '';
+    }
+}
+
 let $ = document.querySelector.bind(document);
 let $$ = document.querySelectorAll.bind(document);
 
@@ -8,7 +17,6 @@ function cartApp(){
     renderCartItems(cartItems);
     payTotal(cartItems)
 }
-
 cartApp();
 
 const cartQuantity = $('.cart-quantity');
@@ -50,21 +58,29 @@ function renderCartItems(cartItems){
 
 function convertCartToArray(cartItems,callback){
     let arrItems = [];
-    for(var i in cartItems){
-        if(cartItems[i].quantity == 0){
-            continue;
-        }else{
-            arrItems.push(cartItems[i]);
-        }
+    for(var i in cartItems){     
+        arrItems.push(cartItems[i]);
     }
     return  arrItems;
 }
 
-function updateQuantity(id_sanpham,value){    
+function updateQuantity(id_sanpham,value){
+
     cartItems = localStorage.getItem('productInCart');
     cartItems = JSON.parse(cartItems);
-    cartItems[id_sanpham].quantity = parseInt(value);
+    cartItems = convertCartToArray(cartItems);
+
+    cartItems.forEach(function(item,index){
+        if(item.id_sanpham == id_sanpham){
+            item.quantity = parseInt(value);
+        }
+    });
+    
     localStorage.setItem('productInCart',JSON.stringify(cartItems));
+
+    let productNumbers = localStorage.getItem('cartNumbers');
+    $('.cart-quantity').innerText = productNumbers-=1;
+
     cartApp();
 }
 
@@ -92,10 +108,34 @@ function totalCost(cartItems){
 
 
 function removeItem(id_sanpham){
+
     document.querySelector('.item-'+id_sanpham).remove();
     cartItems = localStorage.getItem('productInCart');
     cartItems = JSON.parse(cartItems);
-    cartItems[id_sanpham].quantity = 0;
+    cartItems = convertCartToArray(cartItems);
+
+    
+
+    if(cartItems.length == 1){
+        localStorage.removeItem('productInCart');
+        localStorage.setItem('cartNumbers', 0);
+        cartItems = [];
+    }
+    else{
+        cartItems.forEach(function(item,index){
+            if(item.id_sanpham == id_sanpham){
+                let productNumbers = localStorage.getItem('cartNumbers');                
+                localStorage.setItem('cartNumbers', productNumbers-item.quantity);
+                cartItems.splice(index,1);
+            }
+        });
+    }
     localStorage.setItem('productInCart',JSON.stringify(cartItems));
+
     cartApp();
+}
+
+
+function updateLocalStorage(){
+
 }
