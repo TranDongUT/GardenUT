@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,17 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="./assets/css/form.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+    <!-- <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.css"> -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300&display=swap" rel="stylesheet">
+    
     <title>Garden UT</title>
 </head>
 <body>
     <div id="main">
         <!-- Header -->
         <div id="header">
-            <div class="top-header row">
+            <div id="top" class="top-header row">
                 <div class="top-header-left">
+
+                    <a class="menu-btn" href="">
+                        <i class="ti-menu"></i>
+                    </a>
+                    
                     <a href="https://ut.edu.vn/">
                         <i class="ti-email"></i>
                         <span>Email:ut.edu.vn</span>
@@ -27,45 +38,50 @@
                     </a>
                 </div>
                 <div class="top-header-right">
-                    <a href="">
+                    <a class="login-btn" href="#">
                         <i class="ti-user"></i>
                         <span>Login</span>
                     </a>
-                    <a href="">
+                    <a href="cart.html">
                         <i class="ti-shopping-cart"></i>
-                        <span>Cart[<span class="cart-quantity">0</span>]</span>
+                        <span>Cart [ <span class="cart-quantity"> 0 </span> ]</span>
                     </a>
                 </div>
             </div>
 
-            <div class="fix-header">
-                <a class="header-logo" href="#"><img src="./assets/image/logo/logo.png" alt="">
+            <div class="bottom-header">
+                <a class="header-logo" href="index.html"><img src="./assets/image/logo/logo.png" alt="">
                     <span>Garden UT</span></a>
-                <ul class="nav">
-                    <li><a href="">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li  class="subnav">
-                        <a href="#new-arrival">Shop
-                            <i class="ti-angle-down"></i>
-                        </a>
-    
-                        <ul>
-                            <li><a href="">Sen Đá</a></li>
-                            <li><a href="">Cây Cảnh Văn Phòng</a></li>
-                            <li><a href="">Cây Trong Nhà</a></li>
-                            <li class="subnav-2">
-                                <a href="">Hoa</a>
-                                <i class="ti-angle-double-right"></i>
-                                <ul>
-                                    <li><a href="">Sinh Nhật</a></li>
-                                    <li><a href="">Thành Hôn</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#contact">Contact</a></li>
-                    <a class="search-btn" href=""><i class="ti-search"></i></a>
-                </ul>
+                <div class="header-content">    
+                    <ul class="nav">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li>
+                            <a href="shop.html">Shop
+                                <i class="ti-angle-down"></i>
+                            </a>
+                            <ul  class="subnav">
+                                <li><a href="#new-arrival">Sản phẩm mới</a></li>
+                                <li><a href="">Cây cảnh văn phòng</a></li>
+                                <li><a href="">Cây cảnh trong nhà</a></li>
+                                <li><a href="">Xương rồng</a></li>
+                                <li><a href="">Sen đá</a></li>
+                                <li>
+                                    <a href="">Hoa
+                                        <i class="ti-angle-right"></i>
+                                    </a>
+                                    
+                                    <ul class="subnav-2">
+                                        <li><a href="">Sinh nhật</a></li>
+                                        <li><a href="">Đám cưới</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#contact">Contact</a></li>
+                        <a class="search-btn" href=""><i class="ti-search"></i></a>
+                    </ul>
+                </div>
             </div>
 
         </div>
@@ -90,7 +106,6 @@
         <!-- end-slider -->
         <!-- content -->
         <div id="content" >
-
             <div id="about" class="content-section">
                 <div class="section-heading">ABOUT US</div>
                 <div class="section-sub-heading">We are leading in the plants service fields</div>
@@ -122,7 +137,6 @@
                 </div>
             </div>
 
-
             <div id="new-arrival">
                 <div class="content-section">
                     <div class="section-heading">NEW ARRIVALS</div>
@@ -130,11 +144,11 @@
                     
                     <div class="row arrival-list">
 
-                        <div id="item1" class="col-4 arrival-item">
+                        <!-- <div id="item1" class="col-4 arrival-item">
                             <div class="arrival-img">
                                 <img src="./assets/image/arrivals/9.jpg" alt="">
-                                <div class="add-to-cart-btn">Thêm vào giỏ</div>
                             </div>
+                            <div class="add-to-cart-btn">Thêm vào giỏ</div>
                             <div class="arrival-info">
                                 <div class="arrival-name">Cactus Flower</div>
                                 <div class="arrival-cost">100.000</div>
@@ -144,8 +158,8 @@
                         <div id="item2" class="col-4 arrival-item">
                             <div class="arrival-img">
                                 <img src="./assets/image/arrivals/10.jpg" alt="">
-                                <div class="add-to-cart-btn">Thêm vào giỏ</div>
                             </div>
+                            <div class="add-to-cart-btn">Thêm vào giỏ</div>
                             <div class="arrival-info">
                                 <div class="arrival-name">Cactus Flower</div>
                                 <div class="arrival-cost">100.000</div>
@@ -155,8 +169,8 @@
                         <div id="item3" class="col-4 arrival-item">
                             <div class="arrival-img">
                                 <img src="./assets/image/arrivals/11.jpg" alt="">
-                                <div class="add-to-cart-btn">Thêm vào giỏ</div>
                             </div>
+                            <div class="add-to-cart-btn">Thêm vào giỏ</div>
                             <div class="arrival-info">
                                 <div class="arrival-name">Cactus Flower</div>
                                 <div class="arrival-cost">100.000</div>
@@ -166,15 +180,15 @@
                         <div id="item4" class="col-4 arrival-item">
                             <div class="arrival-img">
                                 <img src="./assets/image/arrivals/12.jpg" alt="">
-                                <div class="add-to-cart-btn">Thêm vào giỏ</div>
                             </div>
+                            <div class="add-to-cart-btn">Thêm vào giỏ</div>
                             <div class="arrival-info">
                                 <div class="arrival-name">Cactus Flower</div>
                                 <div class="arrival-cost">100.000</div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
-                    <div class="view-all-btn">VIEW ALL</div>
+                    <a href="shop.html" class="view-all-btn">VIEW ALL</a>
                 </div>
             </div>
 
@@ -183,7 +197,7 @@
                 <div class="section-sub-heading">Send us a message, we will call back later</div>
                 <div class="row contact">                
                     <div class="col-2 ">
-                        <form action="">
+                        <form class="contact-form" action="">
                             <row>
                                 <col-2><input id="name" type="text" placeholder="Your Name"></col-2>
                                 <col-2><input id="email" type="email" placeholder="Your Email"></col-2>
@@ -195,7 +209,7 @@
                         </form>
                     </div>               
                     <div class="col-2">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.0835321075647!2d106.71489441462275!3d10.804914192302219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528a3fbdbffff%3A0xbb015754eb33299c!2zVFLGr-G7nE5HIMSQ4bqgSSBI4buMQyBHSUFPIFRIw5RORyBW4bqsTiBU4bqiSSBUUC4gSENNIFBow7JuZyBDw7RuZyB0w6FjIFNpbmggdmnDqm4!5e0!3m2!1svi!2s!4v1634741499464!5m2!1svi!2s" width="450" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.0835321075647!2d106.71489441462275!3d10.804914192302219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528a3fbdbffff%3A0xbb015754eb33299c!2zVFLGr-G7nE5HIMSQ4bqgSSBI4buMQyBHSUFPIFRIw5RORyBW4bqsTiBU4bqiSSBUUC4gSENNIFBow7JuZyBDw7RuZyB0w6FjIFNpbmggdmnDqm4!5e0!3m2!1svi!2s!4v1634741499464!5m2!1svi!2s" width="450" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe> -->
                     </div>
                 </div>
            
@@ -233,74 +247,63 @@
                 </div>
             </div>
         </div>
-
     </div>
 
-    <!-- modal detail items -->
-
-    <!-- <div class="modal-detail">
-        <div class="modal-container">
-            <div class="modal-close-btn">
-                <i class="ti-close"></i></div>
-            <div class="modal-content">
-                <div class="modal-img">
-                    <img src="./assets/image/arrivals/10.jpg" alt="">
-                </div>
-                <div class="modal-text">
-                    <h2>RECUERDOS PLANT</h2>
-                    <h2>100.000</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem molestiae quidem possimus assumenda blanditiis facilis! Pariatur voluptatibus voluptas neque esse rerum distinctio est ab nostrum, omnis sed commodi? Explicabo, veritatis.</p>
-                    <div class="modal-btn">
-                        <input type="number" class="quantity" value="1" min="1">
-                        <button class="btn add">Thêm vào giỏ</button>
-                        <button class="btn buy">Mua ngay</button>
-                    </div>
-                </div>
+    <!-- login form -->
+    <div class="modal-login">
+        <div class="container right-panel-active">
+            <div class="container__form container--signup">
+                <form action="register.php" method="POST" class="form" id="form1">
+                    <h2 class="form__title">Đăng Kí</h2>
+                    <input type="text" name="username" placeholder="Tên đăng nhập" class="input" required/>
+                    <input type="text" name="phone" placeholder="Số điện thoại" class="input" required/>
+                    <input type="password" name="password" placeholder="Mật khẩu" class="input" required/>
+                    <input type="password" placeholder="Nhập lại mật khẩu" class="input" required/>
+                    <button class="btn">ĐĂNG KÍ</button>
+                </form>
             </div>
-        </div>
-    </div> -->
-
-    <div class="modal">
-        <div class="modal_container">
-            <div class="close"><i class="ti-close"></i></div>
-            <div class="product">
-                <div class="product__images">
-                    <div class="slider"><img src="./assets/image/arrivals/10.jpg" alt=""></div>
-                    <div class="images">
-                        <img class="active" src="./assets/image/arrivals/11.jpg" alt="">
-                        <img src="./assets/image/arrivals/12.jpg" alt="">
-                        <img src="./assets/image/arrivals/9.jpg" alt="">
+        
+            <div class="container__form container--signin">
+                <form  action="#" class="form" id="form2">
+                    <h2 class="form__title">Đăng Nhập</h2>
+                    <input type="text" placeholder="Tên đăng nhập" class="input" required/>
+                    <input type="password" placeholder="Mật khẩu" class="input" required/>
+                    <a href="#" class="link">Quên mật khẩu?</a>
+                    <button class="btn">ĐĂNG NHẬP</button>
+                </form>
+            </div>
+        
+            <div class="container__overlay">
+                <div class="overlay">
+                    <div class="overlay__panel overlay--left">
+                        <button class="btn" id="signUp">ĐĂNG KÍ</button>
                     </div>
-                </div>
-                <div class="infos">
-                    <h2>RECUERDOS PLANT</h2>
-                    <h2 class="price">$9.99</h2>
-                    <div class="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem molestiae quidem possimus assumenda blanditiis facilis! Pariatur voluptatibus voluptas neque esse rerum distinctio est ab nostrum, omnis sed commodi? Explicabo, veritatis.</div>
-                    <div class="quantity">
-                        <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) && qty>1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                        <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="quantity" value="1">
-                        <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                    </div>
-                    <div class="button">
-                        <button class="btn cart">Thêm Vào Giỏ Hàng</button>
-                        <button class="btn buy">Mua Ngay</button>
+                    <div class="overlay__panel overlay--right">
+                        <button class="btn" id="signIn">ĐĂNG NHẬP</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        $(document).ready(function(){
-            $(".images img").click(function(){
-                $(this).addClass('active').siblings().removeClass('active');
-                let image  = $(this).attr('src');
-                $(".slider img").attr('src', image);
-            });
-        });
-    </script>
+
+<script>
+    const signInBtn = document.getElementById("signIn");
+    const signUpBtn = document.getElementById("signUp");
+    const fistForm = document.getElementById("form1");
+    const secondForm = document.getElementById("form2");
+    const container = document.querySelector(".container");
+
+    signUpBtn.addEventListener("click", ()=>{
+    container.classList.remove("right-panel-active");
+    });
+    signInBtn.addEventListener("click", ()=>{
+    container.classList.add("right-panel-active");
+    });
+
+    // fistForm.addEventListener("submit", (e) => e.preventDefault());
+    // secondForm.addEventListener("submit", (e) => e.preventDefault());
+</script>
     <script src="./assets/js/app.js"></script>
-
 </body>
 </html>

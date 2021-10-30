@@ -1,13 +1,7 @@
-
-
-
 const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
+const $$ = document.querySelectorAll.bind(document)
 
-const header = $('#header');
-const items = $$('.arrival-item');
-const modalDetailItem = $('.modal-detail')
-
+var sanphamApi = "http://localhost/gardenut/api/sanpham/read.php";
 
 /* Scroll header */
 document.onscroll = function(){
@@ -19,43 +13,17 @@ document.onscroll = function(){
     }
 }
 
-/* show detail modal item onclick */
-// items.forEach(function(item,index){
-//     item.onclick = function(){
-//         modalDetailItem.classList.add('modal-show');
-//     }
-// });
-
-
-/* modal login form */
-const loginBtn = $('.login-btn');
-const modalFormLogin = $('.modal-login');
-loginBtn.onclick = function(e){
-    e.preventDefault();
-    modalFormLogin.classList.add('show-login-form');
-}
-
-$('.modal-login').onclick = function(){
-    modalFormLogin.classList.remove('show-login-form');
-}
-
-// $('.modal-login .container').onclick = function(e){
-//     e.stopPropagation();
-// }
-
-var sanphamApi = "http://localhost/gardenut/api/sanpham/read.php";
-
 function start(){
-    getData(renderNewArrival);
-   // getData(renderSanPham);  
+    getData(renderSanPham);
 }
+start();
 
 function getData(callback){
     fetch(sanphamApi)
-        .then(function(respone){
-            return respone.json();
-        })
-        .then(callback)
+    .then(function(respone){
+        return respone.json();
+    })
+    .then(callback);
 }
 
 function distinctData(data){
@@ -63,27 +31,27 @@ function distinctData(data){
         [item['id_sanpham'], item])).values()];
 }
 
-function renderNewArrival(data){
-    let sanpham = distinctData(data);
-    let htmls = [];
-    for(var i = 0; i<=3; i++){
-        htmls.push(`<div id="${sanpham[i].id_sanpham}" class="col-4 arrival-item">
-                <div class="arrival-img">
-                    <img src="${sanpham[i].link}" alt="">
-                </div>
-                <div onclick="cartNumbers(${sanpham[i].id_sanpham},'${sanpham[i].tensp}',${sanpham[i].gia},'${sanpham[i].link}')" class="add-to-cart-btn" >Thêm vào giỏ</div>
-                <div class="arrival-info">
-                    <div class="arrival-name">${sanpham[i].tensp}</div>
-                    <div class="arrival-cost">${sanpham[i].gia}</div>
-                </div>
-                 </div>`)
-    }
-    document.querySelector('.arrival-list').innerHTML = htmls.join(""); 
+function renderSanPham(data){
+  
+    let arrSanPham = distinctData(data)
+    let htmls = arrSanPham.map(function(sanpham){
+        return `<div id="${sanpham.id_sanpham}" class="col-md-3 shop-item">
+                    <div class="shop-item-img">
+                        <img src="${sanpham.link}" alt="">
+                    </div>
+                    <div onclick="cartNumbers(${sanpham.id_sanpham},'${sanpham.tensp}',${sanpham.gia},'${sanpham.link}')" class="add-to-cart-btn" >Thêm vào giỏ</div>
+                    <div class="shop-item-info">
+                        <div class="shop-item-name">${sanpham.tensp}</div>
+                        <div class="shop-item-cost">${sanpham.gia}</div>
+                    </div>
+                </div>`
+    })
+
+    $('.shop-list-item').innerHTML = htmls.join("");
 }
-start();
 
 
-
+/* add to cart func, set onclick by internal in html */
 
 const cartQuantity = document.querySelector('.cart-quantity');
 function onLoadCartNumbers(){

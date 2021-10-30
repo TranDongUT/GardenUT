@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/form.css">
+    <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;500&display=swap" rel="stylesheet">
+    <title>Garden UT</title>
+</head>
+<body>
+    <div class="container right-panel-active">
+        <!-- Sign Up -->
+        <div class="container__form container--signup">
+            <form action="register.php" method="POST" class="form" id="register">
+                <h2 class="form__title">Đăng Kí</h2>
+                <input type="text" name="name" placeholder="Tên" class="input" required/>
+                <input type="text" name="phone" placeholder="Số điện thoại" class="input" required/>
+                <input type="password" name="password" placeholder="Mật khẩu" class="input" required/>
+                <input type="password" name="re_password" placeholder="Nhập lại mật khẩu" class="input" required/>
+                <button type="submit" class="btn">ĐĂNG KÍ</button>
+            </form>
+        </div>
+    
+        <!-- Sign In -->
+        <div class="container__form container--signin">
+            <form action="login.php?do=login" method="POST" class="form" id="login">
+                <h2 class="form__title">Đăng Nhập</h2>
+                <input type="text" name="name" placeholder="Tên đăng nhập" class="input" required/>
+                <input type="password" name="password" placeholder="Mật khẩu" class="input" required/>
+                <a href="#" class="link">Quên mật khẩu?</a>
+                <button type="submit" name="login" class="btn">ĐĂNG NHẬP</button>
+            </form>
+        </div>
+    
+        <!-- Overlay -->
+        <div class="container__overlay">
+            <div class="overlay">
+                <div class="overlay__panel overlay--left">
+                    <button class="btn" id="signUp">ĐĂNG KÍ</button>
+                </div>
+                <div class="overlay__panel overlay--right">
+                    <button class="btn" id="signIn">ĐĂNG NHẬP</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const signInBtn = document.getElementById("signIn");
+        const signUpBtn = document.getElementById("signUp");
+        const fistForm = document.getElementById("form1");
+        const secondForm = document.getElementById("form2");
+        const container = document.querySelector(".container");
+
+        signUpBtn.addEventListener("click", ()=>{
+        container.classList.remove("right-panel-active");
+        });
+        signInBtn.addEventListener("click", ()=>{
+        container.classList.add("right-panel-active");
+        });
+
+        fistForm.addEventListener("submit", (e) => e.preventDefault());
+        secondForm.addEventListener("submit", (e) => e.preventDefault());
+
+    </script>
+    
+</body>
+</html>
