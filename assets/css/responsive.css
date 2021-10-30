@@ -33,7 +33,7 @@
 
     #header .bottom-header,
     #header .top-header{
-       
+       display: none;
     }
     
 

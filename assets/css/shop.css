@@ -286,11 +286,8 @@ html{
 
 /* items list */
 
-.shop-list-item{
-    justify-content: space-evenly;
-}
-
 .shop-list-item {
+    justify-content: space-evenly;
     padding: 0;
     margin: 0 8px !important;
 }
@@ -353,6 +350,15 @@ html{
     cursor: pointer;
     opacity: 1;
 }
+
+.page-btn-list{
+    text-align: center;
+}
+
+.page-index{
+    margin: 4px 4px;
+}
+
 /*
 .pagination{
     display: flex;

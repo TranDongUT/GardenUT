@@ -23,7 +23,7 @@ function getData(callback){
     .then(function(respone){
         return respone.json();
     })
-    .then(callback);
+    .then(callback)
 }
 
 function distinctData(data){
@@ -31,10 +31,26 @@ function distinctData(data){
         [item['id_sanpham'], item])).values()];
 }
 
+let currentPage = 1;
+let perPage = 9;
+let arrSanPham = [];
 function renderSanPham(data){
-  
-    let arrSanPham = distinctData(data)
-    let htmls = arrSanPham.map(function(sanpham){
+    arrSanPham = distinctData(data);
+    let totalPage = Math.ceil(arrSanPham.length/perPage);
+
+    for(var i = 1; i <= totalPage; i++){
+        $('.page-btn-list').innerHTML += `<a href="#"><button onclick="handlePage(${i})" type="button" class="btn btn-dark page-index">${i}</button></a>`; 
+    }
+}
+
+function handlePage(key){
+    currentPage = key;
+    data = arrSanPham.slice(
+        (currentPage - 1) * perPage,
+        (currentPage - 1) * perPage + perPage
+    )
+    
+    let htmls = data.map(function(sanpham){
         return `<div id="${sanpham.id_sanpham}" class="col-md-3 shop-item">
                     <div class="shop-item-img">
                         <img src="${sanpham.link}" alt="">
@@ -46,9 +62,35 @@ function renderSanPham(data){
                     </div>
                 </div>`
     })
-
     $('.shop-list-item').innerHTML = htmls.join("");
 }
+
+
+// function renderSanPham(data){
+  
+//     let arrSanPham = distinctData(data)
+//     let htmls = arrSanPham.map(function(sanpham){
+//         return `<div id="${sanpham.id_sanpham}" class="col-md-3 shop-item">
+//                     <div class="shop-item-img">
+//                         <img src="${sanpham.link}" alt="">
+//                     </div>
+//                     <div onclick="cartNumbers(${sanpham.id_sanpham},'${sanpham.tensp}',${sanpham.gia},'${sanpham.link}')" class="add-to-cart-btn" >Thêm vào giỏ</div>
+//                     <div class="shop-item-info">
+//                         <div class="shop-item-name">${sanpham.tensp}</div>
+//                         <div class="shop-item-cost">${sanpham.gia}</div>
+//                     </div>
+//                 </div>`
+//     })
+//     $('.shop-list-item').innerHTML = htmls.join("");
+// }
+
+
+/* Pagination code */
+
+
+
+
+
 
 
 /* add to cart func, set onclick by internal in html */
