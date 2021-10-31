@@ -11,6 +11,7 @@ let $ = document.querySelector.bind(document);
 let $$ = document.querySelectorAll.bind(document);
 
 function cartApp(){
+    onLoadCartNumbers();
     cartItems = localStorage.getItem('productInCart');
     cartItems = JSON.parse(cartItems);
     cartItems = convertCartToArray(cartItems);
@@ -22,11 +23,9 @@ cartApp();
 const cartQuantity = $('.cart-quantity');
 function onLoadCartNumbers(){
     let productNumbers = localStorage.getItem('cartNumbers');
-    if(productNumbers){
-        cartQuantity.innerText = productNumbers;
-    }
+    $('.cart-quantity').innerText = productNumbers;
 }
-onLoadCartNumbers();
+
 
 function renderCartItems(cartItems){
     const htmls = cartItems.map(function(item){
@@ -38,7 +37,7 @@ function renderCartItems(cartItems){
                     </div>
                     <div class="item quantity">
                         <span class="qty-minus" onclick="var effect = document.getElementById('qty-${item.id_sanpham}'); var qty = effect.value; if( !isNaN( qty ) && qty>1 ) effect.value--;updateQuantity(${item.id_sanpham},effect.value) ;return false;"><i class="ti-minus" aria-hidden="true"></i></span>
-                        <input type="number" class="qty-text" onchange="updateQuantity(${item.id_sanpham},this.value)" id="qty-${item.id_sanpham}" step="1" min="1" max="12" name="quantity" value="${item.quantity}">
+                        <input type="number" class="qty-text" id="qty-${item.id_sanpham}" step="1" min="1" max="12" name="quantity" value="${item.quantity}">
                         <span class="qty-plus" onclick="var effect = document.getElementById('qty-${item.id_sanpham}'); var qty = effect.value; if( !isNaN( qty )) effect.value++ ;updateQuantity(${item.id_sanpham},effect.value);return false;"><i class="ti-plus" aria-hidden="true"></i></span>
                     </div>
                     <div class="item-price">
@@ -65,21 +64,20 @@ function convertCartToArray(cartItems,callback){
 }
 
 function updateQuantity(id_sanpham,value){
-
     cartItems = localStorage.getItem('productInCart');
     cartItems = JSON.parse(cartItems);
     cartItems = convertCartToArray(cartItems);
-
+    let productNumbers = 0;
     cartItems.forEach(function(item,index){
         if(item.id_sanpham == id_sanpham){
             item.quantity = parseInt(value);
         }
+        productNumbers += item.quantity;
     });
     
     localStorage.setItem('productInCart',JSON.stringify(cartItems));
-
-    let productNumbers = localStorage.getItem('cartNumbers');
-    $('.cart-quantity').innerText = productNumbers-=1;
+    localStorage.setItem('cartNumbers', productNumbers);
+    $('.cart-quantity').innerText = productNumbers;
 
     cartApp();
 }
@@ -114,8 +112,7 @@ function removeItem(id_sanpham){
     cartItems = JSON.parse(cartItems);
     cartItems = convertCartToArray(cartItems);
 
-    
-
+    /* handle on localstorage */
     if(cartItems.length == 1){
         localStorage.removeItem('productInCart');
         localStorage.setItem('cartNumbers', 0);
@@ -126,6 +123,7 @@ function removeItem(id_sanpham){
             if(item.id_sanpham == id_sanpham){
                 let productNumbers = localStorage.getItem('cartNumbers');                
                 localStorage.setItem('cartNumbers', productNumbers-item.quantity);
+                $('.cart-quantity').innerText = productNumbers-item.quantity;
                 cartItems.splice(index,1);
             }
         });

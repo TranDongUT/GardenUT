@@ -12,8 +12,8 @@ document.onscroll = function(){
         header.style.backgroundColor = '';
     }
 }
-
-function start(){
+/* main */
+function start(){ 
     getData(renderSanPham);
 }
 start();
@@ -34,9 +34,27 @@ function distinctData(data){
 let currentPage = 1;
 let perPage = 9;
 let arrSanPham = [];
+let perPost = [];
+
 function renderSanPham(data){
+
     arrSanPham = distinctData(data);
     let totalPage = Math.ceil(arrSanPham.length/perPage);
+
+    let htmls = [];
+    for(var i = 0; i<9; i++){
+        htmls.push(`<div id="${arrSanPham[i].id_sanpham}" class="col-md-3 shop-item">
+                        <div class="shop-item-img">
+                            <img src="${arrSanPham[i].link}" alt="">
+                        </div>
+                        <div onclick="cartNumbers(${arrSanPham[i].id_sanpham},'${arrSanPham[i].tensp}',${arrSanPham[i].gia},'${arrSanPham[i].link}')" class="add-to-cart-btn" >Thêm vào giỏ</div>
+                        <div class="shop-item-info">
+                            <div class="shop-item-name">${arrSanPham[i].tensp}</div>
+                            <div class="shop-item-cost">${arrSanPham[i].gia}</div>
+                        </div>
+                    </div>`)
+    }
+    $('.shop-list-item').innerHTML = htmls.join("");
 
     for(var i = 1; i <= totalPage; i++){
         $('.page-btn-list').innerHTML += `<a href="#"><button onclick="handlePage(${i})" type="button" class="btn btn-dark page-index">${i}</button></a>`; 
@@ -45,12 +63,12 @@ function renderSanPham(data){
 
 function handlePage(key){
     currentPage = key;
-    data = arrSanPham.slice(
+    perPost = arrSanPham.slice(
         (currentPage - 1) * perPage,
         (currentPage - 1) * perPage + perPage
     )
     
-    let htmls = data.map(function(sanpham){
+    let htmls = perPost.map(function(sanpham){
         return `<div id="${sanpham.id_sanpham}" class="col-md-3 shop-item">
                     <div class="shop-item-img">
                         <img src="${sanpham.link}" alt="">

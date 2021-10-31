@@ -59,6 +59,10 @@
     .slider-text, .slider-btn{
         display: none;
     }
+
+    .col-mobile{
+        width: 100%;
+    }
     
 }
 

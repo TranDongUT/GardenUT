@@ -441,19 +441,22 @@ html{
     justify-content: space-between;
 }
 
+.input-box{
+    margin: 0 20px;
+}
+
 .contact-form{
     width: 100%;
+    padding: 0;
+    
 }
 
 .contact-form input, textarea{
-    padding: 15px 10px;
+    padding: 12px 10px;
     font-size: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
     outline-color:  #70c745;
-}
-
-.contact textarea{
-    width: 95%;
+    width: 100%;
 }
 
 .submit-btn{

@@ -31,7 +31,7 @@ document.onscroll = function(){
 const loginBtn = $('.login-btn');
 const modalFormLogin = $('.modal-login');
 loginBtn.onclick = function(e){
-    e.preventDefault();
+    // e.preventDefault();
     modalFormLogin.classList.add('show-login-form');
 }
 
@@ -39,9 +39,9 @@ $('.modal-login').onclick = function(){
     modalFormLogin.classList.remove('show-login-form');
 }
 
-// $('.modal-login .container').onclick = function(e){
-//     e.stopPropagation();
-// }
+$('.modal-login .container').onclick = function(e){
+    e.stopPropagation();
+}
 
 var sanphamApi = "http://localhost/gardenut/api/sanpham/read.php";
 
