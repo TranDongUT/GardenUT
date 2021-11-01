@@ -62,8 +62,11 @@ class Products
 			//print_r($file['size']);
 
 			if ($file['size'] > (1024 * 2)) {
-				
+
+				// $path = "";
+				// $path = mysql_real_escape_string(urlencode($path) );
 				$uniqueImageName = time()."_".$file['name'];
+
 				if (move_uploaded_file($file['tmp_name'], $_SERVER['DOCUMENT_ROOT']."/GardenUT/assets/image/sanpham/".$uniqueImageName)) {
 					
 					$q = $this->con->query("INSERT INTO `sanpham`(`id_loaisp`, `tensp`, `soluong`, `gia`, `ghichu`, `hinhanh`) VALUES ('$category_id', '$product_name', '$product_qty', '$product_price', '$product_desc', '$uniqueImageName')");

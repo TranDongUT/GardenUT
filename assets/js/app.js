@@ -69,7 +69,7 @@ function renderNewArrival(data){
     for(var i = 0; i<=3; i++){
         htmls.push(`<div id="${sanpham[i].id_sanpham}" class="col-4 arrival-item">
                 <div class="arrival-img">
-                    <img src="${sanpham[i].link}" alt="">
+                    <img src="./assets/image/sanpham/${sanpham[i].link}" alt="">
                 </div>
                 <div onclick="cartNumbers(${sanpham[i].id_sanpham},'${sanpham[i].tensp}',${sanpham[i].gia},'${sanpham[i].link}')" class="add-to-cart-btn" >Thêm vào giỏ</div>
                 <div class="arrival-info">

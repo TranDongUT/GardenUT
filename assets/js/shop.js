@@ -45,7 +45,7 @@ function renderSanPham(data){
     for(var i = 0; i<9; i++){
         htmls.push(`<div id="${arrSanPham[i].id_sanpham}" class="col-md-3 shop-item">
                         <div class="shop-item-img">
-                            <img src="${arrSanPham[i].link}" alt="">
+                            <img src="./assets/image/sanpham/${arrSanPham[i].link}" alt="">
                         </div>
                         <div onclick="cartNumbers(${arrSanPham[i].id_sanpham},'${arrSanPham[i].tensp}',${arrSanPham[i].gia},'${arrSanPham[i].link}')" class="add-to-cart-btn" >Thêm vào giỏ</div>
                         <div class="shop-item-info">
@@ -71,7 +71,7 @@ function handlePage(key){
     let htmls = perPost.map(function(sanpham){
         return `<div id="${sanpham.id_sanpham}" class="col-md-3 shop-item">
                     <div class="shop-item-img">
-                        <img src="${sanpham.link}" alt="">
+                        <img src="./assets/image/sanpham/${sanpham.link}" alt="">
                     </div>
                     <div onclick="cartNumbers(${sanpham.id_sanpham},'${sanpham.tensp}',${sanpham.gia},'${sanpham.link}')" class="add-to-cart-btn" >Thêm vào giỏ</div>
                     <div class="shop-item-info">

@@ -22,7 +22,7 @@ $(document).ready(function(){
 							var productHTML = '<tr>'+
 								              '<td>'+ value.id_sanpham +'</td>'+
 								              '<td>'+ value.tensp +'</td>'+
-								              '<td><img width="60" height="60" src=".'+value.hinhanh+'"></td>'+
+								              '<td><img width="60" height="60" src="../assets/image/sanpham/'+value.hinhanh+'"></td>'+
 								              '<td>'+ value.gia +'</td>'+
 								              '<td>'+ value.soluong +'</td>'+
 								              '<td>'+ value.tenloai +'</td>'+

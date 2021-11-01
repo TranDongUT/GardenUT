@@ -32,7 +32,7 @@ function renderCartItems(cartItems){
         return `<hr>
                 <div class="item item-${item.id_sanpham}">
                     <div class="item-info">
-                        <img src="${item.link}" alt="">
+                        <img src="./assets/image/sanpham/${item.link}" alt="">
                         <div class="name"><h4>${item.ten_sanpham}</h4></div>
                     </div>
                     <div class="item quantity">
