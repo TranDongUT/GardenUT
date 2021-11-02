@@ -84,7 +84,6 @@ $(document).ready(function(){
 			}
 
 		});
-		$(".modal").classList.remove("show");
 	});
 
 

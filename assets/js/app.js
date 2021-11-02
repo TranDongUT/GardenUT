@@ -6,7 +6,6 @@ const $$ = document.querySelectorAll.bind(document);
 
 const header = $('#header');
 const items = $$('.arrival-item');
-const modalDetailItem = $('.modal-detail')
 
 
 /* Scroll header */
@@ -19,12 +18,6 @@ document.onscroll = function(){
     }
 }
 
-/* show detail modal item onclick */
-// items.forEach(function(item,index){
-//     item.onclick = function(){
-//         modalDetailItem.classList.add('modal-show');
-//     }
-// });
 
 
 /* modal login form */

@@ -359,40 +359,6 @@ html{
     margin: 4px 4px;
 }
 
-/*
-.pagination{
-    display: flex;
-    justify-content: center;
-    margin-top: 24px;
-}
-
-.pagination .page-btn{
-    float: right;
-    width: 46px;
-    height: 46px;
-    margin: 0 10px;
-    color: #333;
-    background-color: #f5f5f5;
-    border: 1px solid #ebebeb;
-    font-size: 18px;
-    line-height: 44px;
-    text-align: center;
-    cursor: pointer;
-}
-
-.pagination .page-btn:hover{
-
-    border-color: #70c745;
-        background-color: #70c745;
-        color: #ffffff;
-} */
-
-
-
-
-
-
-
 
 #footer{
     position: relative;
@@ -461,4 +427,169 @@ html{
 .footer-contact span{
     color: #707070;
 }
+
+
+/* Detail product Modal */
+.modal-detail{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.showModal{
+    display: flex;
+}
+
+.modal-detail .close{
+    padding: 10px;
+    position: absolute;
+    right: 0;
+    z-index: 9999;
+  }
+  .close:hover{
+    color:#70c745;
+  }
+  .modal_container{
+    background: #fff;
+    width: 800px;
+    min-height: 200px;
+    margin : 20px;
+    position: relative;
+
+  }
+  .modal-detail .product{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .product .product__images,
+  .product .infos{
+    width: 50%;
+  }
+  .product__images{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 30px;
+    background-color: #f2f4f5;
+  }
+  .product__images .slider{
+    width: 100%;
+    
+  }
+  
+  .modal-slider img{
+    width: 100%;
+    height: 360px;
+    display: flex;
+    margin: 0 auto;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+  .product__images .images{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .product__images .images img{
+    cursor: pointer;
+    object-fit: cover;
+  }
+  .product__images .images img.active{
+    border: 1px solid #70c745;
+  }
+  .product__images .images img{
+    width: 100px;
+    height: 100px;
+  }
+  
+  .infos{
+    padding: 30px;
+  }
+  .infos h2{
+    font-size: 30px;
+    padding-bottom: 20px;
+  }
+  .infos h2.price{
+    font-size: 26px;
+    font-weight: 600;
+    color: #70c745;
+  }
+  .infos .p{
+      color: #707070;
+      line-height: 25px;
+  }
+  .quantity{
+    display: flex;
+    align-items: center;
+    width: 130px;
+    justify-content: space-between;
+    background:#f2f4f5;
+    font-size: 12px;
+    margin: 30px 0;
+  }
+  .quantity .qty-text{
+    border: none;
+    background: #f2f4f5;
+    text-align: center;
+    font-size: 16px;
+    height: 46px;
+    width: 40px;
+  }
+  .quantity .qty-minus{
+    z-index: 999;
+    padding-left: 20px;
+    cursor: pointer;
+  }
+  .quantity .qty-plus{
+    z-index : 999;
+    padding-right: 20px;
+    cursor: pointer;
+    margin-left: -10px;
+  }
+  
+  .button{
+    display: flex;
+    align-items: center;
+    
+  }
+  .button .cart{
+    padding: 10px 10px;
+    border-radius: 5px;
+    border:2px solid #70c745; 
+    margin-right: 20px;
+    background: #fff; 
+    color: #70c745;
+    font-weight: 500;
+    font-size: 16px;
+  }
+  .button .cart:hover{
+    color: #fff;
+    background: #70c745;
+  }
+  .button .buy{
+    padding: 10px 10px;
+    border-radius: 5px;
+    border:2px solid #70c745; 
+    background: #70c745; 
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+  }
+  .button .buy:hover{
+    border: 2px solid #70c745;
+    background: #fff; 
+    color: #70c745;
+  }
 

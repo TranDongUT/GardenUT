@@ -314,8 +314,6 @@
     container.classList.add("right-panel-active");
     });
 
-    // fistForm.addEventListener("submit", (e) => e.preventDefault());
-    // secondForm.addEventListener("submit", (e) => e.preventDefault());
 </script>
 <script src="./assets/js/app.js"></script>
 </body>

@@ -143,16 +143,6 @@
                    
                 <div class="col-md-9 ">
                     <div class="row shop-list-item">
-                        <!-- <div id="item1" class="col-md-3 shop-item">
-                            <div class="shop-item-img">
-                                <img src="./assets/image/arrivals/9.jpg" alt="">
-                            </div>
-                            <div class="add-to-cart-btn">Thêm vào giỏ</div>
-                            <div class="shop-item-info">
-                                <div class="shop-item-name">Cactus Flower</div>
-                                <div class="shop-item-cost">100.000</div>
-                            </div>
-                        </div>
                         <div id="item1" class="col-md-3 shop-item">
                             <div class="shop-item-img">
                                 <img src="./assets/image/arrivals/9.jpg" alt="">
@@ -173,6 +163,17 @@
                                 <div class="shop-item-cost">100.000</div>
                             </div>
                         </div>
+                        <div id="item1" class="col-md-3 shop-item">
+                            <div class="shop-item-img">
+                                <img src="./assets/image/arrivals/9.jpg" alt="">
+                            </div>
+                            <div class="add-to-cart-btn">Thêm vào giỏ</div>
+                            <div class="shop-item-info">
+                                <div class="shop-item-name">Cactus Flower</div>
+                                <div class="shop-item-cost">100.000</div>
+                            </div>
+                        </div>
+                        <!-- 
                         <div id="item1" class="col-md-3 shop-item">
                             <div class="shop-item-img">
                                 <img src="./assets/image/arrivals/9.jpg" alt="">
@@ -274,6 +275,50 @@
             </div>
         </div>
     </div>
+
+    
+     <!-- modal detail items -->
+
+    <div class="modal-detail">
+        <div class="modal_container">
+            <div class="close"><i class="ti-close"></i></div>
+            <div class="product">
+                <div class="product__images">
+                    <div class="modal-slider"><img src="./assets/image/arrivals/10.jpg" alt=""></div>
+                    <div class="images">
+                        <img class="" src="./assets/image/arrivals/11.jpg" alt="">
+                        <img src="./assets/image/arrivals/12.jpg" alt="">
+                        <img src="./assets/image/arrivals/9.jpg" alt="">
+                    </div>
+                </div>
+                <div class="infos">
+                    <h2>RECUERDOS PLANT</h2>
+                    <h2 class="price">$9.99</h2>
+                    <div class="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem molestiae quidem possimus assumenda blanditiis facilis! Pariatur voluptatibus voluptas neque esse rerum distinctio est ab nostrum, omnis sed commodi? Explicabo, veritatis.</div>
+                    <div class="quantity">
+                        <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) && qty>1 ) effect.value--;return false;"><i class="ti-minus" aria-hidden="true"></i></span>
+                        <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="quantity" value="1">
+                        <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="ti-plus" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="button">
+                        <button class="cart">Thêm Vào Giỏ</button>
+                        <button class="buy">Mua Ngay</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function(){
+            $(".modal-detail .images img").click(function(){
+                $(this).addClass('active').siblings().removeClass('active');
+                let image  = $(this).attr('src');
+                $(".modal-detail .slider img").attr('src', image);
+            });
+        });
+    </script>
 
     <script src="./assets/bootstrap/js/bootstrap.js"></script>
     <script src="./assets/js/shop.js"></script>
