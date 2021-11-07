@@ -387,7 +387,7 @@ if (isset($_POST['DELETE_CATEGORY'])) {
 		echo json_encode($p->deleteCategory($_POST['cid']));
 		exit();
 	}else{
-		echo json_encode(['status'=> 303, 'message'=> 'Invalid details']);
+		echo json_encode(['status'=> 303, 'message'=> 'no']);
 		exit();
 	}
 }

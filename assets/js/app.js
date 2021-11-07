@@ -6,6 +6,7 @@ const $$ = document.querySelectorAll.bind(document);
 
 const header = $('#header');
 const items = $$('.arrival-item');
+const modalDetailItem = $('.modal-detail')
 
 
 /* Scroll header */
@@ -18,7 +19,23 @@ document.onscroll = function(){
     }
 }
 
+const menuBtns = $$('.menu-btn');
+const navMobile = $('.nav');
 
+for (const menuBtn of menuBtns) {
+    menuBtn.addEventListener('click', function(e) {
+        if ($('i.ti-close') !==null){
+            $('#btn-menu').classList.remove('ti-close');
+            $('#btn-menu').classList.add('ti-menu');
+            navMobile.classList.remove('active');
+        }
+        else{
+            $('#btn-menu').classList.remove('ti-menu');
+            $('#btn-menu').classList.add('ti-close');
+            navMobile.classList.add('active');
+        }
+    })
+}
 
 /* modal login form */
 const loginBtn = $('.login-btn');
@@ -35,6 +52,8 @@ $('.modal-login').onclick = function(){
 $('.modal-login .container').onclick = function(e){
     e.stopPropagation();
 }
+
+
 
 var sanphamApi = "http://localhost/gardenut/api/sanpham/read.php";
 
@@ -61,15 +80,17 @@ function renderNewArrival(data){
     let htmls = [];
     for(var i = 0; i<=3; i++){
         htmls.push(`<div id="${sanpham[i].id_sanpham}" class="col-4 arrival-item">
-                <div class="arrival-img">
-                    <img src="./assets/image/sanpham/${sanpham[i].link}" alt="">
-                </div>
-                <div onclick="cartNumbers(${sanpham[i].id_sanpham},'${sanpham[i].tensp}',${sanpham[i].gia},'${sanpham[i].link}')" class="add-to-cart-btn" >Thêm vào giỏ</div>
-                <div class="arrival-info">
-                    <div class="arrival-name">${sanpham[i].tensp}</div>
-                    <div class="arrival-cost">${sanpham[i].gia}</div>
-                </div>
-                 </div>`)
+        <div class="arrival-img">
+            <img src="./assets/image/sanpham/${sanpham[i].link}" alt="">
+        </div>
+        <div class="arrival-info">
+        <div class="arrival-name">${sanpham[i].tensp}</div>
+            <div class="item-cost-cart">
+                <div class="arrival-cost">${sanpham[i].gia}</div>
+                <div onclick="cartNumbers(${sanpham[i].id_sanpham},'${sanpham[i].tensp}',${sanpham[i].gia},'${sanpham[i].link}')" class="add-to-cart-btn" > + </div>
+            </div>
+        </div>
+         </div>`)
     }
     document.querySelector('.arrival-list').innerHTML = htmls.join(""); 
 }
@@ -110,7 +131,6 @@ function cartNumbers(id_sanpham, ten_sanpham, gia, link){
     }  
     setItems(sanpham);
 }
-
 
 function setItems(sanpham){
     let cartItems = localStorage.getItem('productInCart');

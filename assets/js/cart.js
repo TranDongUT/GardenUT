@@ -1,3 +1,5 @@
+let $ = document.querySelector.bind(document);
+let $$ = document.querySelectorAll.bind(document);
 document.onscroll = function(){
     if(window.scrollY >= 200){
         header.style.backgroundColor = 'black';
@@ -7,11 +9,27 @@ document.onscroll = function(){
     }
 }
 
-let $ = document.querySelector.bind(document);
-let $$ = document.querySelectorAll.bind(document);
+const menuBtns = $$('.menu-btn');
+const navMobile = $('.nav');
+
+for (const menuBtn of menuBtns) {
+    menuBtn.addEventListener('click', function(e) {
+        if ($('i.ti-close') !==null){
+            $('#btn-menu').classList.remove('ti-close');
+            $('#btn-menu').classList.add('ti-menu');
+            navMobile.classList.remove('active');
+        }
+        else{
+            $('#btn-menu').classList.remove('ti-menu');
+            $('#btn-menu').classList.add('ti-close');
+            navMobile.classList.add('active');
+        }
+    })
+}
 
 function cartApp(){
     onLoadCartNumbers();
+    updateOrder();
     cartItems = localStorage.getItem('productInCart');
     cartItems = JSON.parse(cartItems);
     cartItems = convertCartToArray(cartItems);
@@ -29,7 +47,8 @@ function onLoadCartNumbers(){
 
 function renderCartItems(cartItems){
     const htmls = cartItems.map(function(item){
-        return `<hr>
+        
+        return `
                 <div class="item item-${item.id_sanpham}">
                     <div class="item-info">
                         <img src="./assets/image/sanpham/${item.link}" alt="">
@@ -49,10 +68,10 @@ function renderCartItems(cartItems){
                     <div onclick="removeItem(${item.id_sanpham})" class="item-trash">
                         <i class="ti-trash"></i>
                     </div>
-                </div>
-                <hr>`
+                </div>`
     })
     document.querySelector('.products-list').innerHTML = htmls.join("");
+    
 }
 
 function convertCartToArray(cartItems,callback){
@@ -134,6 +153,23 @@ function removeItem(id_sanpham){
 }
 
 
-function updateLocalStorage(){
+function getProductToOrder(){
 
+    cartItems = localStorage.getItem('productInCart');
+    cartItems = JSON.parse(cartItems);
+    cartItems = convertCartToArray(cartItems);
+
+    return cartItems;
+}
+
+function updateOrder(){
+    arrProducts = getProductToOrder();
+    let soluong = localStorage.getItem('cartNumbers');
+    
+    let htmls = arrProducts.map(function(item){
+        return `<input type="hidden" name="products[]" id="" value='${JSON.stringify(item)}'>`;
+        
+    })
+    $('.arrProducts').innerHTML = htmls.join("");
+    $("input[name='totalProducts']").value = soluong;
 }

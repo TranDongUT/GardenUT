@@ -12,6 +12,25 @@ document.onscroll = function(){
         header.style.backgroundColor = '';
     }
 }
+
+const menuBtns = $$('.menu-btn');
+const navMobile = $('.nav');
+
+for (const menuBtn of menuBtns) {
+    menuBtn.addEventListener('click', function(e) {
+        if ($('i.ti-close') !==null){
+            $('#btn-menu').classList.remove('ti-close');
+            $('#btn-menu').classList.add('ti-menu');
+            navMobile.classList.remove('active');
+        }
+        else{
+            $('#btn-menu').classList.remove('ti-menu');
+            $('#btn-menu').classList.add('ti-close');
+            navMobile.classList.add('active');
+        }
+    })
+}
+
 /* main */
 function start(){ 
     getData(function(data){
@@ -100,10 +119,12 @@ function handlePage(key){
                     <div class="shop-item-img">
                         <img src="./assets/image/sanpham/${sanpham.link}" alt="">
                     </div>
-                    <div onclick="cartNumbers(${sanpham.id_sanpham},'${sanpham.tensp}',${sanpham.gia},'${sanpham.link}')" class="add-to-cart-btn" >Thêm vào giỏ</div>
                     <div class="shop-item-info">
                         <div onclick="renderModal(${sanpham.id_sanpham},'${sanpham.tensp}','${sanpham.ghichu}',${sanpham.gia},'${sanpham.link}')" class="shop-item-name">${sanpham.tensp}</div>
-                        <div class="shop-item-cost">${sanpham.gia}</div>
+                        <div class="item-cost-cart">
+                            <div class="shop-item-cost">${sanpham.gia}</div>
+                            <div onclick="cartNumbers(${sanpham.id_sanpham},'${sanpham.tensp}',${sanpham.gia},'${sanpham.link}')" class="add-to-cart-btn" > + </div>
+                        </div>    
                     </div>
                 </div>`
     })
@@ -266,10 +287,12 @@ function renderSort(data){
                         <div class="shop-item-img">
                             <img src="./assets/image/sanpham/${data[i].link}" alt="">
                         </div>
-                        <div onclick="cartNumbers(${data[i].id_sanpham},'${data[i].tensp}',${data[i].gia},'${data[i].link}')" class="add-to-cart-btn" >Thêm vào giỏ</div>
                         <div class="shop-item-info">
                             <div onclick="renderModal(${data[i].id_sanpham})" class="shop-item-name">${data[i].tensp}</div>
-                            <div class="shop-item-cost">${data[i].gia}</div>
+                            <div class="item-cost-cart">
+                                <div class="shop-item-cost">${data[i].gia}</div>
+                                <div onclick="cartNumbers(${data[i].id_sanpham},'${data[i].tensp}',${data[i].gia},'${data[i].link}')" class="add-to-cart-btn" > + </div>
+                            </div>
                         </div>
                     </div>`)
     }

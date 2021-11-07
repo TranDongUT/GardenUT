@@ -20,7 +20,7 @@ if (isset($_POST['login']))
     // $password = md5($password);
      
     //Kiểm tra tên đăng nhập có tồn tại không
-    $sql = "SELECT username, password FROM user_info WHERE username='$username'";
+    $sql = "SELECT user_id, username, password FROM user_info WHERE username='$username'";
     $query = mysqli_query($con, $sql);
     if (mysqli_num_rows($query) == 0) {
         echo '<script language="javascript">alert("Tên đăng nhập không tồn tại. Vui lòng kiểm tra lại."); window.location="index.php";</script>';
@@ -37,9 +37,9 @@ if (isset($_POST['login']))
     }
      
     //Lưu tên đăng nhập
-    
     session_start();
     $_SESSION['username'] = $username;
+    $_SESSION['user_id'] = $row['user_id'];
     header('Location: index.php');
         die();
 }
