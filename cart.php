@@ -1,3 +1,18 @@
+<?php
+    session_start();
+    if(isset($_SESSION["isOrder"])){
+        if($_SESSION["isOrder"] != null){/* đặt hàng thành công */
+
+            echo "<script type='text/javascript'>;</script>";
+            echo "<script type='text/javascript'>
+                    alert('Đặt hàng thành công!');
+                    localStorage.clear();</script>";
+            $_SESSION["isOrder"] = null; /* trả lại null để order tiếp ok =))) */
+        }
+    }
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +26,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
+    <link rel="stylesheet" href="./assets/css/form.css">
     <title>Garden UT</title>
 </head>
 <body>
@@ -32,9 +48,8 @@
                 </div>
                 <div class="top-header-right">
                     <?php
-                        session_start();
                         if (!isset($_SESSION['username'])){
-                            echo '<a class="login-btn" href="#">
+                            echo '<a onclick = "showLoginForm();" class="login-btn" href="#">
                                     <i class="ti-user"></i>
                                     <span>Login</span>
                                 </a>';
@@ -42,7 +57,7 @@
                         else {
                             $user = $_SESSION['username'];
                             echo '<a class="logout-btn" href="logout.php">
-                                    <span style="color: #fff;margin-right: 20px;">Hi, ' .$user .' </span>
+                                    <span class="isLogin"; style="color: #fff;margin-right: 20px;">Hi, ' .$user .' </span>
                                     <span>Logout</span>
                                 </a>';
                         }
@@ -178,15 +193,14 @@
                         <div class="pay-address">
                             <h5>Địa Chỉ</h5>
                                 <div class="diachi">
-                                    <input type="text" name="tinh" id="" placeholder="Tỉnh / Thành phố">
-                                    <input type="text" name="huyen" id="" placeholder="Quận / Huyện">
-                                    <input type="text" name="xa" id="" placeholder="Phường / Xã">
-                                    <input type="text" name="sonha" id="" placeholder="Số nhà">
+                                    <input type="text" name="tinh" id="" placeholder="Tỉnh / Thành phố" required>
+                                    <input type="text" name="huyen" id="" placeholder="Quận / Huyện" required>
+                                    <input type="text" name="xa" id="" placeholder="Phường / Xã" required>
+                                    <input type="text" name="sonha" id="" placeholder="Số nhà" required>
                                     <input type="hidden" name="totalProducts" id="">
                                     <div class="arrProducts"></div>
                                 </div>
                         </div>
-
                         <div class="pay-detail">
                             <!-- <div class="pay-price">
                                 <h5>Tổng Tiền Hàng</h5>
@@ -201,7 +215,7 @@
                                 <h5>$11.99</h5>
                             </div> -->
                         </div>
-                        <a href=""><button class="btn-order">TIẾN HÀNH THANH TOÁN</button></a>
+                        <a href=""><button class="btn-order">TIẾN HÀNH ĐẶT HÀNG</button></a>
                         </form>
                     </div>
                 </div>
@@ -243,7 +257,70 @@
             </div>
         </div>
     </div>
+<!-- modal login  -->
+<div class="modal-login">
+        <div class="container right-panel-active">
+            <div class="container__form container--signup">
+                <form action="register.php" method="POST" onsubmit="return validateForm();" class="form" id="form1">
+                    <h2 class="form__title">Đăng Kí</h2>
+                    <input type="text" name="username" placeholder="Tên đăng nhập" class="input" required/>
+                    <input type="text" name="phone" placeholder="Số điện thoại" class="input" minlength=10 required/>
+                    <input type="password" name="password" id="pass" placeholder="Mật khẩu" minlength=6 class="input" required/>
+                    <input type="password" name="re_password" id="re_pass" placeholder="Nhập lại mật khẩu" minlength=6 class="input" required/>
+                    <button class="btn">ĐĂNG KÍ</button>
+                </form>
+            </div>
+        
+            <div class="container__form container--signin">
+                <form action="login.php?do=login" method="POST" class="form" id="login">
+                    <h2 class="form__title">Đăng Nhập</h2>
+                    <input type="text" name="username" placeholder="Tên đăng nhập" class="input" required/>
+                    <input type="password" name="password"  placeholder="Mật khẩu" class="input" required/>
+                    <a href="#" class="link">Quên mật khẩu?</a>
+                    <button type="submit" name="login" class="btn">ĐĂNG NHẬP</button>
+                </form>
+            </div>
+        
+            <div class="container__overlay">
+                <div class="overlay">
+                    <div class="overlay__panel overlay--left">
+                        <button class="btn" id="signUp">ĐĂNG KÍ</button>
+                    </div>
+                    <div class="overlay__panel overlay--right">
+                        <button class="btn" id="signIn">ĐĂNG NHẬP</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+	function validateForm() {
+		var pass = document.querySelector('#pass').value;
+		var re_pass = document.querySelector('#re_pass').value;
+		if(pass != re_pass) {
+			alert("Mật khẩu không trùng khớp, vui lòng kiểm tra lại");
+			return false
+		}
+		return true
+	}
+</script>
+<script>
+    const signInBtn = document.getElementById("signIn");
+    const signUpBtn = document.getElementById("signUp");
+    const fistForm = document.getElementById("form1");
+    const secondForm = document.getElementById("form2");
+    const container = document.querySelector(".container");
 
+    signUpBtn.addEventListener("click", ()=>{
+    container.classList.remove("right-panel-active");
+    });
+    signInBtn.addEventListener("click", ()=>{
+    container.classList.add("right-panel-active");
+    });
+
+    // fistForm.addEventListener("submit", (e) => e.preventDefault());
+    // secondForm.addEventListener("submit", (e) => e.preventDefault());
+</script>
     <script src="./assets/js/cart.js"></script>
 </body>
 </html>

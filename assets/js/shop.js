@@ -13,6 +13,7 @@ document.onscroll = function(){
     }
 }
 
+
 const menuBtns = $$('.menu-btn');
 const navMobile = $('.nav');
 
@@ -117,7 +118,7 @@ function handlePage(key){
     let htmls = perPost.map(function(sanpham){
         return `<div id="${sanpham.id_sanpham}" class="col-md-3 shop-item">
                     <div class="shop-item-img">
-                        <img src="./assets/image/sanpham/${sanpham.link}" alt="">
+                        <img src="./assets/image/sanpham/${sanpham.hinhanh}" alt="">
                     </div>
                     <div class="shop-item-info">
                         <div onclick="renderModal(${sanpham.id_sanpham},'${sanpham.tensp}','${sanpham.ghichu}',${sanpham.gia},'${sanpham.link}')" class="shop-item-name">${sanpham.tensp}</div>

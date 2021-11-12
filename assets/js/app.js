@@ -40,9 +40,9 @@ for (const menuBtn of menuBtns) {
 /* modal login form */
 const loginBtn = $('.login-btn');
 const modalFormLogin = $('.modal-login');
-loginBtn.onclick = function(e){
-    // e.preventDefault();
+function showLoginForm(){
     modalFormLogin.classList.add('show-login-form');
+    return false;
 }
 
 $('.modal-login').onclick = function(){
@@ -61,6 +61,7 @@ function start(){
     getData(renderNewArrival);
    // getData(renderSanPham);  
 }
+start();
 
 function getData(callback){
     fetch(sanphamApi)
@@ -94,7 +95,7 @@ function renderNewArrival(data){
     }
     document.querySelector('.arrival-list').innerHTML = htmls.join(""); 
 }
-start();
+
 
 
 

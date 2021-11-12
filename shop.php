@@ -32,7 +32,7 @@
                     </a>
                 </div>
                 <div class="top-header-right">
-                    <!-- <?php
+                    <?php
                         session_start();
                         if (!isset($_SESSION['username'])){
                             echo '<a class="login-btn" href="#">
@@ -47,7 +47,7 @@
                                     <span>Logout</span>
                                 </a>';
                         }
-                    ?> -->
+                    ?>
                     <a href="cart.php">
                         <i class="ti-shopping-cart"></i>
                         <span>Cart [ <span class="cart-quantity"> 0 </span> ]</span>
@@ -85,7 +85,8 @@
                             </ul>
                         </li>
                         <li><a class="menu-btn" href="#contact">Contact</a></li>
-                        <a class="search-btn menu-btn" href=""><i class="ti-search"></i></a>
+                        <li><a class="menu-btn search-btn" href=""><i class="ti-search"></i></a></li>
+                      
                     </ul>
                 </div>
                 <div class="menu-btn">

@@ -8,6 +8,7 @@
         public $tensp;
         public $ghichu;
         public $gia;
+        public $hinhanh;
         public $linkanh;
 
         /* connect */
@@ -17,7 +18,7 @@
 
         /* read */
         public function read(){
-            $query = "SELECT * FROM sanpham, hinhanh where sanpham.id_sanpham = hinhanh.id_sanpham";
+            $query = "SELECT * FROM sanpham,hinhanh WHERE sanpham.id_sanpham = hinhanh.id_sanpham";
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;

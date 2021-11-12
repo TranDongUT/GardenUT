@@ -18,7 +18,7 @@
       $password   = addslashes($_POST['password']);
       $re_password   = addslashes($_POST['re_password']);
       
-      // $password = md5($password);
+      $password = md5($password);
       
       $add_user_info = "INSERT INTO user_info (username, phone, password) VALUES ('$username','$phone', '$password')";
   

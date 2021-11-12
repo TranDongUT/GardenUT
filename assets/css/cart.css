@@ -238,6 +238,10 @@ form input:focus{
 .pay button:hover{
     color: #70c745;
     background: #fff;
+    cursor: pointer;
+}
+btn-order{
+    cursor: pointer;
 }
 
 

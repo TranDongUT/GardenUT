@@ -176,7 +176,7 @@
   .btn:focus{
     outline: none;
   }
-  form{
+  .form{
     background-color: var(--white);
       display: flex;
       align-items: center;

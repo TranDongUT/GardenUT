@@ -15,7 +15,7 @@ if (isset($_POST['login']))
 {
     $username = '';
     $username = addslashes($_POST['username']);
-    $password = addslashes($_POST['password']);
+    $password = md5($_POST['password']);
 
     // $password = md5($password);
      
@@ -40,7 +40,8 @@ if (isset($_POST['login']))
     session_start();
     $_SESSION['username'] = $username;
     $_SESSION['user_id'] = $row['user_id'];
+    $_SESSION["isOrder"] = null;
     header('Location: index.php');
-        die();
+       die();
 }
 ?>

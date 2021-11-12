@@ -138,7 +138,7 @@ $(document).ready(function(){
 				}
 				}
 			})
-			$("#product_details").modal(''); 
+			window.location.href = "customer_orders.php";
 			
 	});
 
@@ -157,8 +157,7 @@ $(document).ready(function(){
 				}
 				}
 			})
-
-			$("#product_details").modal('');
+			window.location.href = "customer_orders.php";
 
 			
 	});

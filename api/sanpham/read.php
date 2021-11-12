@@ -27,6 +27,7 @@
                 'tensp' => $tensp,
                 'ghichu' => $ghichu,
                 'gia' => $gia,
+                'hinhanh' => $hinhanh,
                 'link' => $link
             );
             array_push( $sanphamArr['Sanpham'], $sanphamItem); /* mỗi phần tử trong mảng là 1 obj sanpham */

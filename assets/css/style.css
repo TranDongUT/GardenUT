@@ -161,7 +161,8 @@ html{
     background-color: #fff;
     color: #70c745;
     transition-duration: 500ms;
-    animation:showdown 0.6s;    
+    animation:showdown 0.6s;
+    padding-left: 0; 
 }
 
 @keyframes showdown {
@@ -193,6 +194,7 @@ html{
     display: inline-block;
     background-color: #fff;
     box-shadow: 0 0 8px;
+    padding-left: 0;
 }
 
 /* Slider */
@@ -619,6 +621,8 @@ html{
 .footer-contact span{
     color: #707070;
 }
+
+/* Modal */
 .modal{
     position: fixed;
     top: 0;

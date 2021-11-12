@@ -37,7 +37,7 @@
                     <?php
                         session_start();
                         if (!isset($_SESSION['username'])){
-                            echo '<a class="login-btn" href="#">
+                            echo '<a onclick = "showLoginForm();" class="login-btn" href="#">
                                     <i class="ti-user"></i>
                                     <span>Login</span>
                                 </a>';
@@ -170,7 +170,6 @@
                     <div class="section-sub-heading">We have the latest products, it must be exciting for you</div>
                     
                     <div class="row arrival-list">
-
                         <!-- <div id="item1" class="col-4 arrival-item">
                             <div class="arrival-img">
                                 <img src="./assets/image/arrivals/9.jpg" alt="">
@@ -301,7 +300,7 @@
                     <h2 class="form__title">Đăng Nhập</h2>
                     <input type="text" name="username" placeholder="Tên đăng nhập" class="input" required/>
                     <input type="password" name="password"  placeholder="Mật khẩu" class="input" required/>
-                    <a href="#" class="link">Quên mật khẩu?</a>
+                    <!-- <a href="#" class="link">Quên mật khẩu?</a> -->
                     <button type="submit" name="login" class="btn">ĐĂNG NHẬP</button>
                 </form>
             </div>

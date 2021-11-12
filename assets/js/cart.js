@@ -12,6 +12,23 @@ document.onscroll = function(){
 const menuBtns = $$('.menu-btn');
 const navMobile = $('.nav');
 
+/* modal-login */
+const loginBtn = $('.login-btn');
+const modalFormLogin = $('.modal-login');
+function showLoginForm() {
+    // e.preventDefault();
+    modalFormLogin.classList.add('show-login-form');
+}
+
+$('.modal-login').onclick = function(){
+    modalFormLogin.classList.remove('show-login-form');
+}
+
+$('.modal-login .container').onclick = function(e){
+    e.stopPropagation();
+}
+
+
 for (const menuBtn of menuBtns) {
     menuBtn.addEventListener('click', function(e) {
         if ($('i.ti-close') !==null){
@@ -172,4 +189,17 @@ function updateOrder(){
     })
     $('.arrProducts').innerHTML = htmls.join("");
     $("input[name='totalProducts']").value = soluong;
+}
+
+
+const btnOrder = $('.btn-order');
+const isLogin = $('.isLogin');
+//console.log(isLogin);
+btnOrder.onclick = function(){
+    if(isLogin == null){
+        modalFormLogin.classList.add('show-login-form');
+    }
+    if(localStorage.getItem('cartNumbers') === null){
+        alert("Bạn chưa có sản phẩm nào trong giỏ");
+    }
 }

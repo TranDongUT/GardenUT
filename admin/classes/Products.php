@@ -44,13 +44,13 @@ class Products
 		return ['status'=> 202, 'message'=> $_DATA];
 	}
 
+	/* them san pham */
 	public function addProduct($product_name,
 								$category_id,
 								$product_desc,
 								$product_qty,
 								$product_price,
 								$file){
-
 
 		$fileName = $file['name'];
 		$fileNameAr= explode(".", $fileName);
@@ -59,18 +59,17 @@ class Products
 
 		if ($ext == "jpg" || $ext == "jpeg" || $ext == "png") {
 			
-			//print_r($file['size']);
-
 			if ($file['size'] > (1024 * 2)) {
 
-				// $path = "";
-				// $path = mysql_real_escape_string(urlencode($path) );
 				$uniqueImageName = time()."_".$file['name'];
 
 				if (move_uploaded_file($file['tmp_name'], $_SERVER['DOCUMENT_ROOT']."/GardenUT/assets/image/sanpham/".$uniqueImageName)) {
 					
 					$q = $this->con->query("INSERT INTO `sanpham`(`id_loaisp`, `tensp`, `soluong`, `gia`, `ghichu`, `hinhanh`) VALUES ('$category_id', '$product_name', '$product_qty', '$product_price', '$product_desc', '$uniqueImageName')");
-
+					$q2 = $this->con->query("SELECT id_sanpham FROM sanpham ORDER BY id_sanpham DESC LIMIT 1");
+					$id = $q2->fetch_assoc();
+					$id = $id["id_sanpham"];
+					$q3 = $this->con->query(" INSERT INTO `hinhanh`(`id_sanpham`, `link`) VALUES ('$id', '$uniqueImageName')");
 					if ($q) {
 						return ['status'=> 202, 'message'=> 'Thêm sản phẩm thành công..!'];
 						
@@ -92,7 +91,24 @@ class Products
 
 	}
 
+/* xóa sản phẩm */
+	public function deleteProduct($pid = null){
+		if ($pid != null) {
+			$qDeleteHinhAnh = $this->con->query("DELETE FROM hinhanh WHERE id_sanpham = '$pid'");
+			$q = $this->con->query("DELETE FROM sanpham WHERE id_sanpham = '$pid'");
+			if ($q) {
+				return ['status'=> 202, 'message'=> 'Sản phẩm đã loại bỏ khỏi kho'];
+			}else{
+				return ['status'=> 202, 'message'=> 'Lỗi truy vấn'];
+			}	
+			}else{
+				return ['status'=> 303, 'message'=>'ID sản phẩm không hợp lệ'];
+			}
+	
+		}
 
+
+/*  sửa sản phẩm */
 	public function editProductWithImage($pid,
 										$product_name,
 										$category_id,
@@ -100,7 +116,6 @@ class Products
 										$product_qty,
 										$product_price,
 										$file){
-
 
 		$fileName = $file['name'];
 		$fileNameAr= explode(".", $fileName);
@@ -200,20 +215,7 @@ class Products
 		return ['status'=> 202, 'message'=> $ar];
 	}
 
-	public function deleteProduct($pid = null){
-		if ($pid != null) {
-			$q = $this->con->query("DELETE FROM sanpham WHERE id_sanpham = '$pid'");
-			if ($q) {
-				return ['status'=> 202, 'message'=> 'Sản phẩm đã loại bỏ khỏi kho'];
-			}else{
-				return ['status'=> 202, 'message'=> 'Lỗi truy vấn'];
-			}
-			
-		}else{
-			return ['status'=> 303, 'message'=>'ID sản phẩm không hợp lệ'];
-		}
 
-	}
 
 	public function deleteCategory($cid = null){
 		if ($cid != null) {
@@ -270,7 +272,6 @@ if (isset($_POST['add_product'])) {
 	&& !empty($product_price)
 	&& !empty($_FILES['product_image']['name'])) {
 		
-
 		$p = new Products();
 		$result = $p->addProduct($product_name,
 								$category_id,
@@ -279,22 +280,32 @@ if (isset($_POST['add_product'])) {
 								$product_price,
 								$_FILES['product_image']);
 		
-		header("Content-type: application/json");
+		//header("Content-type: application/json");
 		echo json_encode($result);
-		http_response_code($result['status']);
+		//http_response_code($result['status']);
 		exit();
-
 
 	}else{
 		echo json_encode(['status'=> 303, 'message'=> 'Empty fields']);
 		exit();
 	}
-
-
-
-	
 }
 
+if (isset($_POST['DELETE_PRODUCT'])) {
+	$p = new Products();
+	if (isset($_SESSION['admin_id'])) {
+		if(!empty($_POST['pid'])){
+			$pid = $_POST['pid'];
+			echo json_encode($p->deleteProduct($pid));
+			exit();
+		}else{
+			echo json_encode(['status'=> 303, 'message'=> 'Invalid product id']);
+			exit();
+		}
+	}else{
+		echo json_encode(['status'=> 303, 'message'=> 'Invalid Session']);
+	}
+}
 
 if (isset($_POST['edit_product'])) {
 
@@ -333,11 +344,7 @@ if (isset($_POST['edit_product'])) {
 	}else{
 		echo json_encode(['status'=> 303, 'message'=> 'Empty fields']);
 		exit();
-	}
-
-
-
-	
+	}	
 }
 
 
@@ -362,23 +369,7 @@ if (isset($_POST['GET_CATEGORIES'])) {
 	
 }
 
-if (isset($_POST['DELETE_PRODUCT'])) {
-	$p = new Products();
-	if (isset($_SESSION['admin_id'])) {
-		if(!empty($_POST['pid'])){
-			$pid = $_POST['pid'];
-			echo json_encode($p->deleteProduct($pid));
-			exit();
-		}else{
-			echo json_encode(['status'=> 303, 'message'=> 'Invalid product id']);
-			exit();
-		}
-	}else{
-		echo json_encode(['status'=> 303, 'message'=> 'Invalid Session']);
-	}
 
-
-}
 
 
 if (isset($_POST['DELETE_CATEGORY'])) {

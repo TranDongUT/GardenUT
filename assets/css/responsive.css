@@ -17,78 +17,82 @@ padding-right: 0;
 }
      /* header */
 
-
 #header{
-margin: 0;
-padding: 0;
-overflow: hidden;
+     margin: 0;
+     padding: 0;
+     overflow: hidden;
 }
 #header .bottom-header{
-padding: 0;
+     padding: 0;
 }
 #header .top-header .top-header-left{
-display: none;
+     display: none;
 }
 #header .top-header .top-header-right{
-position: absolute;
-right: 0;
+     position: absolute;
+     right: 0;
 }
 
 .slider-text h1 {
-font-size: 24px;
+     font-size: 24px;
 }
 .slider-text p {
-font-size: 16px;
+     font-size: 16px;
 }
 #header .nav{
-position: fixed;
-height: 100vh;
-width: 100%;
-right: -100%;
-top: 0;
-background: rgba(17, 17, 17, 0.863);
-text-align: center;
-padding-top: 80px;
-transition: all .3s ease;
+     position: fixed;
+     height: 100vh;
+     width: 100%;
+     right: -100%;
+     top: 0;
+     background: rgba(17, 17, 17, 0.863);
+     text-align: center;
+     padding-top: 80px;
+     transition: all .3s ease;
 }
 #header .nav.active{
-right:0;
+     right:0;
 }
 #header .nav > li{
-display: block;
-width: 100%;
+     display: block;
+     width: 100%;
 }
 #header .nav > li > a,
 #header .nav > li:hover > a{
-display: inline-block;
-margin: 30px 0;
-font-size: 30px;
+     display: inline-block;
+     margin: 30px 0;
+     font-size: 30px;
 }
+
+.subnav {
+     width: 100%;
+}
+
 #header  .menu-btn{
-display: block;
-z-index: 999;
+     display: block;
+     z-index: 999;
 }
 #header .search-btn{
-display: none;
-opacity:0;
+     display: none;
+     opacity:0;
 }
 
 #header img{
-width: 50px;
-padding-left: 10px;
+     width: 50px;
+     padding-left: 10px;
 }
 #header .header-logo span{
-font-size: 24px;
+     font-size: 24px;
 }
 
      /* content */
 #content .content-section{
-width: 100%;
+     width: 100%;
 }
 
      /* tour */
 .place-items .col{
-width: 100%;
+     width: 100%;
 }
 
 .col-mobile{

@@ -58,9 +58,7 @@ $(document).ready(function(){
 	
 
 	$(".add-product").on("click", function(){
-
 		$.ajax({
-
 			url : '../admin/classes/Products.php',
 			method : 'POST',
 			data : new FormData($("#add-product-form")[0]),
@@ -72,7 +70,6 @@ $(document).ready(function(){
 				var resp = $.parseJSON(response);
 				if (resp.status == 202) {
 					$("#add-product-form").trigger("reset");
-					$("#add_product_modal").modal('hide');
 					
 					getProducts();
 					alert(resp.message);
@@ -80,9 +77,7 @@ $(document).ready(function(){
 				}else if(resp.status == 303){
 					alert(resp.message);
 				}
-				
 			}
-
 		});
 	});
 
