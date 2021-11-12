@@ -13,23 +13,21 @@ document.onscroll = function(){
     }
 }
 
-
-const menuBtns = $$('.menu-btn');
-const navMobile = $('.nav');
-
-for (const menuBtn of menuBtns) {
-    menuBtn.addEventListener('click', function(e) {
-        if ($('i.ti-close') !==null){
-            $('#btn-menu').classList.remove('ti-close');
-            $('#btn-menu').classList.add('ti-menu');
-            navMobile.classList.remove('active');
-        }
-        else{
-            $('#btn-menu').classList.remove('ti-menu');
-            $('#btn-menu').classList.add('ti-close');
-            navMobile.classList.add('active');
-        }
-    })
+/* Mobile menu */
+//const menuBtns = $('.menu-mobile');
+//const navMobile = $('.nav');
+$('.menu-mobile').onclick = function(){
+    if ($('.ti-menu') !== null){
+        //console.log($('#btn-menu').className)
+        //$('#btn-menu').classList.remove('ti-close');
+        $('#btn-menu').className = ('ti-toggle ti-close');
+        $('.nav').style.right = 0;
+    }
+    else{
+        $('#btn-menu').className = ('ti-toggle ti-menu');
+        $('.nav').style.right = -100 + "%";
+        
+    }
 }
 
 /* main */
@@ -64,7 +62,6 @@ function convertCartToArray(data){
 }
 
 function handleDataImg(arr){
-
     let newArr = []; 
     newArr.push(arr[0]);
     for(let i=0; i<arr.length; i++){
@@ -167,7 +164,6 @@ function cartNumbers(id_sanpham, ten_sanpham, gia, link, quantity = 1){
     setItems(sanpham);
 }
 
-
 function setItems(sanpham){
     let cartItems = localStorage.getItem('productInCart');
     cartItems = JSON.parse(cartItems);
@@ -194,7 +190,6 @@ function setItems(sanpham){
 onLoadCartNumbers();
 
 ///////////////////////////////////////
-
 /* Handle Detail Modal */
 const modalDetail = $('.modal-detail');
 const modalSilderImg = $('.modal-slider img')
@@ -211,8 +206,7 @@ function renderModal(id_sanpham){
             let htmls = `<div class="product">
                     <div class="product__images">
                         <div class="modal-slider"><img src="./assets/image/sanpham/${detailItem[0].link}" alt=""></div>
-                        <div class="images">
-                       
+                        <div class="images">      
                         </div>
                     </div>
                     <div class="infos">
@@ -231,13 +225,17 @@ function renderModal(id_sanpham){
                 </div>`;
                 $('.modal_container').innerHTML = htmls;   
                 for(let i = 0; i<arrImg.length; i++){
-                    $('.product__images .images').innerHTML += `<img class="" src="./assets/image/sanpham/${arrImg[i]}" alt="">`
-                }
-        
+                    $('.product__images .images').innerHTML += `<img onclick = "changeImg('img-${i}')"; class="img-${i}" src="./assets/image/sanpham/${arrImg[i]}" alt="">`
+                }              
     })
-    modalDetail.classList.add('showModal');
-   
+    modalDetail.classList.add('showModal');  
 }
+
+function changeImg(img){
+    let image  = $('.'+img).src;
+    $(".modal-slider img").src = image;
+}
+
 
 function filterArrImg(arr){
     return  newArrImg = arr.map(function(item){
@@ -311,7 +309,7 @@ widgetBox.forEach(function(e){
             let index = arrIdBox.indexOf(e.value);
             arrIdBox.splice(index,1);
         }
-        filterByTypeProduct(arrIdBox)
+        filterByTypeProduct(arrIdBox);
     }
 })
 
@@ -334,4 +332,48 @@ function filterByTypeProduct(arrIdBox){
             renderSanPham(data);
         });
     }
+}
+
+window.onload = function(){
+    const searchResult = localStorage.getItem("searchResult");
+    if(searchResult != null){
+        getData(function(data){
+            data = convertCartToArray(data);
+            data = handleDataImg(data);
+            let arrFill = data.filter(function(item){ 
+                return item.tensp.includes(searchResult);
+            })
+            renderSanPham(arrFill);
+        });
+        renderSanPham(arrSanPham);
+        localStorage.removeItem("searchResult");
+    }
+    else{
+        if(localStorage.getItem("selected") === "product-1"){
+            widgetBox[0].checked == true;
+            arrIdBox.push(widgetBox[0].value);
+        }
+        if(localStorage.getItem("selected") === "product-2"){
+            widgetBox[1].checked == true;
+            arrIdBox.push(widgetBox[1].value);
+        }
+        if(localStorage.getItem("selected") === "product-3"){
+            widgetBox[2].checked == true;
+            arrIdBox.push(widgetBox[2].value);
+        }
+        if(localStorage.getItem("selected") === "product-4"){
+            widgetBox[3].checked == true;
+            arrIdBox.push(widgetBox[3].value);
+        }
+        if(localStorage.getItem("selected") === "product-5"){
+            widgetBox[4].checked == true;
+            arrIdBox.push(widgetBox[4].value);
+        }
+        if(localStorage.getItem("selected") === "product-6"){
+            widgetBox[5].checked == true;
+            arrIdBox.push(widgetBox[5].value);
+        }
+        filterByTypeProduct(arrIdBox);
+        localStorage.removeItem("selected");
+   }
 }

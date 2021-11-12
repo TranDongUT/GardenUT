@@ -3,17 +3,17 @@
 @media screen and (max-width: 739px) {
     /* common */
 .row{
-flex-direction: column;
-align-items: center;
-margin-left: 0px;
-margin-right: 0px;
+     flex-direction: column;
+     align-items: center;
+     margin-left: 0px;
+     margin-right: 0px;
 }
 
 .col{
-margin-top: 12px;
-width: 230px;
-padding-left: 0;
-padding-right: 0;
+     margin-top: 12px;
+     width: 230px;
+     padding-left: 0;
+     padding-right: 0;
 }
      /* header */
 
@@ -68,6 +68,10 @@ padding-right: 0;
      width: 100%;
 }
 
+.subnav:hover{
+     position: initial !important;
+}
+
 #header  .menu-btn{
      display: block;
      z-index: 999;
@@ -87,11 +91,6 @@ padding-right: 0;
 
      /* content */
 #content .content-section{
-     width: 100%;
-}
-
-     /* tour */
-.place-items .col{
      width: 100%;
 }
 

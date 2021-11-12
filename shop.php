@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
+    
     <title>Garden UT</title>
 </head>
 <body>  
@@ -89,8 +90,8 @@
                       
                     </ul>
                 </div>
-                <div class="menu-btn">
-                    <i id="btn-menu"class="ti-menu"></i>
+                <div class="menu-btn menu-mobile">
+                    <i id="btn-menu"class="ti-toggle ti-menu"></i>
                 </div>
             </div>
 
@@ -325,8 +326,7 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
+    <!-- <script>
         $(document).ready(function(){
             $(".modal-detail .showModal .images img").click(function(){
                 alert("ok");
@@ -335,9 +335,10 @@
                 $(".modal-detail .showModal .modal-slider img").attr('src', image);
             });
         });
-    </script>
-
+    </script> -->
+    
     <script src="./assets/bootstrap/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./assets/js/shop.js"></script>
 </body>
 </html>

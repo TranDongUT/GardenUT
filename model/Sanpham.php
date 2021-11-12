@@ -25,7 +25,7 @@
         }
 
 
-        /* show 1 */
+        /* show find */
         public function show(){
             $query = "SELECT * FROM sanpham WHERE id_sanpham =? LIMIT 1";
             $stmt = $this->conn->prepare($query);

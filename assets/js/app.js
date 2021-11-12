@@ -1,6 +1,4 @@
 
-
-
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
@@ -19,6 +17,8 @@ document.onscroll = function(){
     }
 }
 
+
+/* Mobile menu */
 const menuBtns = $$('.menu-btn');
 const navMobile = $('.nav');
 
@@ -54,7 +54,28 @@ $('.modal-login .container').onclick = function(e){
 }
 
 
+/* select/search submenu */
+const listSelected = $$(".select-product");
+//
+listSelected.forEach(function(e){
+    e.onclick = function(){
+        localStorage.setItem("selected",e.getAttribute('id'))
+        window.location = "shop.php";
+    };
+});
 
+$(".search-btn").onclick = function(){
+    if($(".search-result").value != ""){
+        //console.log($(".search-result").value)
+        localStorage.setItem("searchResult",capitalizeFirstLetter($(".search-result").value))
+        window.location = "shop.php";
+    }
+}
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+/* RENDER API */
 var sanphamApi = "http://localhost/gardenut/api/sanpham/read.php";
 
 function start(){

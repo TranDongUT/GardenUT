@@ -165,6 +165,10 @@ html{
     padding-left: 0; 
 }
 
+.header-content .nav .search-result{
+    display: none;
+}
+
 @keyframes showdown {
     from{
         opacity: 0.5;

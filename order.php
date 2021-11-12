@@ -31,15 +31,22 @@
             $row = mysqli_fetch_array(mysqli_query($con, $sql1));
             $id_order = $row['id_order'];
 
-            $success = null;
             foreach($_POST['products'] as $d => $data){
                 $obj = json_decode($data,true);
                 $sp = $obj['id_sanpham'];
                 $qty = $obj['quantity'];
                 $add = "INSERT INTO order_details (id_order , id_sanpham, soluong) VALUES ('$id_order', '$sp', '$qty')";      
-                mysqli_query($con, $add);
-                /* đặt hàng xong thì isorder = 1 */
-                $_SESSION["isOrder"] = 1;
+                mysqli_query($con, $add);               
+                if(!$add)
+                {
+                    echo mysqli_error($conn);
+                    die();
+                }
+                else
+                {/* đặt hàng xong thì isorder = 1 */
+                    echo "Query succesfully executed!";
+                    $_SESSION["isOrder"] = 1;
+                }   
             }
             header('Location: cart.php');
         }

@@ -70,24 +70,25 @@
                             </a>
                             <ul  class="subnav">
                                 <li><a href="#new-arrival">Sản phẩm mới</a></li>
-                                <li><a href="">Cây cảnh văn phòng</a></li>
-                                <li><a href="">Cây cảnh trong nhà</a></li>
-                                <li><a href="">Xương rồng</a></li>
-                                <li><a href="">Sen đá</a></li>
+                                <li><a class="select-product" id="product-1" href="shop.php">Cây cảnh văn phòng</a></li>
+                                <li><a class="select-product" id="product-2" href="shop.php">Cây cảnh trong nhà</a></li>
+                                <li><a class="select-product" id="product-3" href="shop.php">Xương rồng</a></li>
+                                <li><a class="select-product" id="product-4" href="shop.php">Sen đá</a></li>
                                 <li>
                                     <a href="">Hoa
                                         <i class="ti-angle-right"></i>
                                     </a>
                                     
                                     <ul class="subnav-2">
-                                        <li><a href="">Sinh nhật</a></li>
-                                        <li><a href="">Đám cưới</a></li>
+                                        <li><a class="select-product" id="product-5" href="shop.php">Đám cưới</a></li>
+                                        <li><a class="select-product" id="product-6" href="shop.php">Sinh nhật</a></li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
-                        <li><a class="menu-btn" href="#contact">Contact</a></li>
-                        <li><a class="menu-btn search-btn" href=""><i class="ti-search"></i></a></li>
+                        <li><a class="menu-btn menu-contact-mobile" href="#contact">Contact</a></li>
+                        <li><a class="menu-btn search-btn" href="#"><i class="ti-search"></i></a></li>
+                        <li><input class="search-result" type="text"></li>
                     </ul>
                 </div>
                 <div class="menu-btn">
