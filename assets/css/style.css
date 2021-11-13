@@ -164,9 +164,26 @@ html{
     animation:showdown 0.6s;
     padding-left: 0; 
 }
-
-.header-content .nav .search-result{
+.menu-search{
+    position: relative;
+}
+.header-content .nav #div-search-result{
+    position: absolute;
+    right: 50px;
+    z-index: 9999;
     display: none;
+}
+input.search-result {
+    padding: 5px;
+}
+.header-content .nav #div-search-result i{
+    position: absolute;
+    top: 8px;
+    right: 5px;
+    cursor: pointer;
+}
+.header-content .nav #div-search-result.active{
+    display: block;
 }
 
 @keyframes showdown {

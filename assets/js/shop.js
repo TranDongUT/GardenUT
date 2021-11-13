@@ -334,6 +334,7 @@ function filterByTypeProduct(arrIdBox){
     }
 }
 
+
 window.onload = function(){
     const searchResult = localStorage.getItem("searchResult");
     if(searchResult != null){
@@ -377,3 +378,41 @@ window.onload = function(){
         localStorage.removeItem("selected");
    }
 }
+
+/* select/search submenu */
+const listSelected = $$(".select-product");
+//
+listSelected.forEach(function(e){
+    e.onclick = function(){
+        localStorage.setItem("selected",e.getAttribute('id'))
+        window.location = "shop.php";
+    };
+});
+$(".menu-search").onclick = function(){
+    if ($('#div-search-result.active') !== null){
+        $('#div-search-result').classList.remove("active");
+
+    }
+    else {
+        $('#div-search-result').classList.add("active");
+    }
+}
+
+
+$("#search-btn").onclick = function(){
+    if($(".search-result").value != ""){
+        //console.log($(".search-result").value)
+        localStorage.setItem("searchResult",capitalizeFirstLetter($(".search-result").value))
+        window.location = "shop.php";
+    }
+    
+}
+function capitalizeFirstLetter(string) {
+    // return string.charAt(0).toUpperCase() + string.slice(1);
+    return string
+    .toLowerCase()
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+  }
+

@@ -39,6 +39,24 @@ html{
     z-index: -10;
     animation: zoom 10s linear infinite;
 }
+.menu-search{
+    position: relative;
+}
+.header-content .nav #div-search-result{
+    position: absolute;
+    right: 50px;
+    z-index: 9999;
+    display: none;
+}
+.header-content .nav #div-search-result i{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+.header-content .nav #div-search-result.active{
+    display: block;
+}
 
 @keyframes zoom {
     0% {

@@ -87,8 +87,10 @@
                             </ul>
                         </li>
                         <li><a class="menu-btn menu-contact-mobile" href="#contact">Contact</a></li>
-                        <li><a class="menu-btn search-btn" href="#"><i class="ti-search"></i></a></li>
-                        <li><input class="search-result" type="text"></li>
+                        <li>
+                            <a class="menu-btn menu-search" href="#"><i class="ti-search"></i></a>
+                            <div id="div-search-result" ><input class="search-result" type="text"><i id='search-btn' class="ti-arrow-right"></i></div>
+                        </li>
                     </ul>
                 </div>
                 <div class="menu-btn">
