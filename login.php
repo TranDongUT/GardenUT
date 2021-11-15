@@ -1,6 +1,5 @@
 <?php
 
- 
 header('Content-Type: text/html; charset=UTF-8');
 $servername = 'localhost'; 
 $db = 'gardenut'; 
@@ -41,7 +40,7 @@ if (isset($_POST['login']))
     $_SESSION['username'] = $username;
     $_SESSION['user_id'] = $row['user_id'];
     $_SESSION["isOrder"] = null;
-    header('Location: index.php');
+    header("Location:".$_SESSION['currentPage']);/* trả về page current */
        die();
 }
 ?>

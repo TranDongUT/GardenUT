@@ -79,11 +79,8 @@ $(document).ready(function(){
 		
 	}
 
-	
-
-
-	$(document.body).on('click', '.details', function(){
-		
+	/* show detail order */
+	$(document.body).on('click', '.details', function(){	
 		var cid = $(this).attr('cid');
 			$.ajax({
 				url : '../admin/classes/Customers.php',

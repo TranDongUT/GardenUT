@@ -36,6 +36,7 @@
                 <div class="top-header-right">
                     <?php
                         session_start();
+                        $_SESSION['currentPage'] = $_SERVER['PHP_SELF'];
                         if (!isset($_SESSION['username'])){
                             echo '<a onclick = "showLoginForm();" class="login-btn" href="#">
                                     <i class="ti-user"></i>
@@ -107,10 +108,10 @@
                 <h1>Thực vật tồn tại trong thời tiết và những tia sáng <br> bao quanh chúng</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque ante nec ipsum iaculis, ac iaculis ipsum porttitor. Vivamus cursus nisl lectus, id mattis nisl lobortis eu. Duis diam augue, dapibus ut dolor at, mattis maximus dolor.</p>
                 <div class="slider-btn">
-                    <a href="" class="get-started">
+                    <a href="shop.php" class="get-started">
                         GET STARTED                
                     </a>
-                    <a href="" class="contact-us">
+                    <a href="#contact" class="contact-us">
                         CONTACT US!
                     </a>
                 </div>
@@ -137,21 +138,21 @@
                     <div class="col-4 about-item">
                         <img class="about-img" src="./assets/image/about/b2.png" alt="">
                         <div>
-                            <h5 class="about-heading">Quality Products</h5>
+                            <h5 class="about-heading">Perfect Service</h5>
                             <p class="about-text">ntiam eu sagittis est, at commodo lacini libero. Praesent dignissim sed odio vel aliquam manta lagorn.</p>
                         </div>
                     </div>
                     <div class="col-4 about-item">
                         <img class="about-img" src="./assets/image/about/b3.png" alt="">
                         <div>
-                            <h5 class="about-heading">Quality Products</h5>
+                            <h5 class="about-heading">100% Natural</h5>
                             <p class="about-text">ntiam eu sagittis est, at commodo lacini libero. Praesent dignissim sed odio vel aliquam manta lagorn.</p>
                         </div>
                     </div>
                     <div class="col-4 about-item">
                         <img class="about-img" src="./assets/image/about/b4.png" alt="">
                         <div>
-                            <h5 class="about-heading">Quality Products</h5>
+                            <h5 class="about-heading">Environmentally friendly</h5>
                             <p class="about-text">ntiam eu sagittis est, at commodo lacini libero. Praesent dignissim sed odio vel aliquam manta lagorn.</p>
                         </div>
                     </div>
@@ -291,7 +292,7 @@
                 <form action="register.php" method="POST" onsubmit="return validateForm();" class="form" id="form1">
                     <h2 class="form__title">Đăng Kí</h2>
                     <input type="text" name="username" placeholder="Tên đăng nhập" class="input" required/>
-                    <input type="text" name="phone" placeholder="Số điện thoại" class="input" minlength=10 required/>
+                    <input type="number" name="phone" placeholder="Số điện thoại" class="input" minlength=10 required/>
                     <input type="password" name="password" id="pass" placeholder="Mật khẩu" minlength=6 class="input" required/>
                     <input type="password" name="re_password" id="re_pass" placeholder="Nhập lại mật khẩu" minlength=6 class="input" required/>
                     <button class="btn">ĐĂNG KÍ</button>

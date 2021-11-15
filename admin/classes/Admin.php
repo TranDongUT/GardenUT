@@ -27,15 +27,34 @@ class Admin
 		return ['status'=> 303, 'message'=> 'No Admin'];
 	}
 
-
+	public function updateAdminList($pid){
+		$query = $this->con->query("UPDATE `admin` SET `is_active` = '1' WHERE `admin_id` = '$pid'");
+		$ar = [];
+		if ($query->num_rows > 0) {
+			while ($row = $query->fetch_assoc()) {
+				$ar[] = $row;
+			}
+			return ['status'=> 202, 'message'=> $ar];
+		}
+		return ['status'=> 303, 'message'=> 'No Admin'];
+	}
 }
 
 
 if (isset($_POST['GET_ADMIN'])) {
 	$a = new Admin();
 	echo json_encode($a->getAdminList());
-	exit();
-	
+	exit();	
 }
 
+if (isset($_POST['UPDATE_ADMIN'])) {
+	if (!empty($_POST['pid'])) {
+		$c = new Admin();
+		echo json_encode($c->updateAdminList($_POST['cid']));
+		exit();
+	}else{
+		echo json_encode(['status'=> 303, 'message'=> 'Invalid details']);
+		exit();
+	}
+}
 ?>

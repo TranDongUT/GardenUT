@@ -42,7 +42,6 @@ const loginBtn = $('.login-btn');
 const modalFormLogin = $('.modal-login');
 function showLoginForm(){
     modalFormLogin.classList.add('show-login-form');
-    return false;
 }
 
 $('.modal-login').onclick = function(){

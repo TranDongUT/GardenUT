@@ -370,8 +370,6 @@ if (isset($_POST['GET_CATEGORIES'])) {
 }
 
 
-
-
 if (isset($_POST['DELETE_CATEGORY'])) {
 	if (!empty($_POST['cid'])) {
 		$p = new Products();

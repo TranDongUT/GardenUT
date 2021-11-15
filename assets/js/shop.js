@@ -323,7 +323,7 @@ function filterByTypeProduct(arrIdBox){
             })
             renderSanPham(arrFill);
         });
-        renderSanPham(arrSanPham);
+        //renderSanPham(arrSanPham);
     }
     else if(arrIdBox.length == 0){
         getData(function(data){

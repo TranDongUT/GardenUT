@@ -19,6 +19,14 @@
       $re_password   = addslashes($_POST['re_password']);
       
       $password = md5($password);
+
+          //Kiểm tra tên đăng nhập có tồn tại không
+      $sql = "SELECT user_id, username, password FROM user_info WHERE username='$username'";
+      $query = mysqli_query($con, $sql);
+      if (mysqli_num_rows($query) != 0) {
+        echo '<script language="javascript">alert("Tên đăng nhập đã tồn tại. Vui lòng kiểm tra lại."); window.location="index.php";</script>';
+        exit;
+      }
       
       $add_user_info = "INSERT INTO user_info (username, phone, password) VALUES ('$username','$phone', '$password')";
   

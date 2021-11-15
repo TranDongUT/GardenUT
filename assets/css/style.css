@@ -705,7 +705,7 @@ input.search-result {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
   .product__images .images img{
     cursor: pointer;

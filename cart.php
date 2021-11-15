@@ -1,16 +1,16 @@
 <?php
     session_start();
     if(isset($_SESSION["isOrder"])){
+        echo $_SESSION["isOrder"];
         if($_SESSION["isOrder"] != null){/* đặt hàng thành công */
-
             echo "<script type='text/javascript'>;</script>";
             echo "<script type='text/javascript'>
-                    alert('Đặt hàng thành công!');
-                    localStorage.clear();</script>";
-            $_SESSION["isOrder"] = null; /* trả lại null để order tiếp ok =))) */
+            alert('Đặt hàng thành công!');
+            localStorage.clear();</script>";
+            $_SESSION["isOrder"] = null; /* trả lại null để order tiếp */
         }
     }
-    
+    $_SESSION['currentPage'] = $_SERVER['PHP_SELF'];/* Giữ vị trí của page hiện tại */
 ?>
 
 <!DOCTYPE html>
@@ -48,6 +48,7 @@
                 </div>
                 <div class="top-header-right">
                     <?php
+                        //session_start();
                         if (!isset($_SESSION['username'])){
                             echo '<a onclick = "showLoginForm();" class="login-btn" href="#">
                                     <i class="ti-user"></i>
@@ -57,7 +58,7 @@
                         else {
                             $user = $_SESSION['username'];
                             echo '<a class="logout-btn" href="logout.php">
-                                    <span class="isLogin"; style="color: #fff;margin-right: 20px;">Hi, ' .$user .' </span>
+                                    <span class="isLogin" style="color: #fff;margin-right: 20px;">Hi, ' .$user .' </span>
                                     <span>Logout</span>
                                 </a>';
                         }
@@ -72,7 +73,7 @@
             <div class="bottom-header">
                 <a class="header-logo" href="index.php"><img src="./assets/image/logo/logo.png" alt="">
                     <span>Garden UT</span></a>
-                <div class="header-content">    
+                    <div class="header-content">    
                     <ul class="nav">
                         <li><a class="menu-btn" href="index.php">Home</a></li>
                         <li><a class="menu-btn" href="#about">About</a></li>
@@ -82,28 +83,31 @@
                             </a>
                             <ul  class="subnav">
                                 <li><a href="#new-arrival">Sản phẩm mới</a></li>
-                                <li><a href="">Cây cảnh văn phòng</a></li>
-                                <li><a href="">Cây cảnh trong nhà</a></li>
-                                <li><a href="">Xương rồng</a></li>
-                                <li><a href="">Sen đá</a></li>
+                                <li><a class="select-product" id="product-1" href="shop.php">Cây cảnh văn phòng</a></li>
+                                <li><a class="select-product" id="product-2" href="shop.php">Cây cảnh trong nhà</a></li>
+                                <li><a class="select-product" id="product-3" href="shop.php">Xương rồng</a></li>
+                                <li><a class="select-product" id="product-4" href="shop.php">Sen đá</a></li>
                                 <li>
                                     <a href="">Hoa
                                         <i class="ti-angle-right"></i>
                                     </a>
                                     
                                     <ul class="subnav-2">
-                                        <li><a href="">Sinh nhật</a></li>
-                                        <li><a href="">Đám cưới</a></li>
+                                        <li><a class="select-product" id="product-5" href="shop.php">Đám cưới</a></li>
+                                        <li><a class="select-product" id="product-6" href="shop.php">Sinh nhật</a></li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
-                        <li><a class="menu-btn" href="#contact">Contact</a></li>
-                        <a class="search-btn menu-btn" href=""><i class="ti-search"></i></a>
+                        <li><a class="menu-btn menu-contact-mobile" href="#contact">Contact</a></li>
+                        <li>
+                            <a class="menu-btn menu-search" href="#"><i class="ti-search"></i></a>
+                            <div id="div-search-result" ><input class="search-result" type="text"><i id='search-btn' class="ti-arrow-right"></i></div>
+                        </li>
                     </ul>
                 </div>
-                <div class="menu-btn">
-                    <i id="btn-menu"class="ti-menu"></i>
+                <div class="menu-btn menu-mobile">
+                    <i id="btn-menu"class="ti-toggle ti-menu"></i>
                 </div>
             </div>
 
@@ -264,7 +268,7 @@
                 <form action="register.php" method="POST" onsubmit="return validateForm();" class="form" id="form1">
                     <h2 class="form__title">Đăng Kí</h2>
                     <input type="text" name="username" placeholder="Tên đăng nhập" class="input" required/>
-                    <input type="text" name="phone" placeholder="Số điện thoại" class="input" minlength=10 required/>
+                    <input type="number" name="phone" placeholder="Số điện thoại" class="input" minlength=10 required/>
                     <input type="password" name="password" id="pass" placeholder="Mật khẩu" minlength=6 class="input" required/>
                     <input type="password" name="re_password" id="re_pass" placeholder="Nhập lại mật khẩu" minlength=6 class="input" required/>
                     <button class="btn">ĐĂNG KÍ</button>
@@ -276,7 +280,7 @@
                     <h2 class="form__title">Đăng Nhập</h2>
                     <input type="text" name="username" placeholder="Tên đăng nhập" class="input" required/>
                     <input type="password" name="password"  placeholder="Mật khẩu" class="input" required/>
-                    <a href="#" class="link">Quên mật khẩu?</a>
+                    <!-- <a href="#" class="link">Quên mật khẩu?</a> -->
                     <button type="submit" name="login" class="btn">ĐĂNG NHẬP</button>
                 </form>
             </div>

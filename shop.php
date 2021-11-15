@@ -36,10 +36,10 @@
                     <?php
                         session_start();
                         if (!isset($_SESSION['username'])){
-                            echo '<a class="login-btn" href="#">
-                                    <i class="ti-user"></i>
-                                    <span>Login</span>
-                                </a>';
+                            // echo '<a class="login-btn" href="#">
+                            //         <i class="ti-user"></i>
+                            //         <span>Login</span>
+                            //     </a>';
                         }
                         else {
                             $user = $_SESSION['username'];
@@ -118,28 +118,28 @@
                                     <label for="all-item">Tất cả</label>
                                 </div> -->
                                 <div class="custom-control">
-                                    <input value="1" class="widget-boxs" type="checkbox">
+                                    <input id="vanphong" value="1" class="widget-boxs" type="checkbox">
                                     <label for="vanphong">Cây cảnh văn phòng</label>
                                 </div>
                                 <div class="custom-control">
-                                    <input value="2" class="widget-boxs" type="checkbox">
+                                    <input id="home" value="2" class="widget-boxs" type="checkbox">
                                     <label for="home">Cây cảnh trong nhà</label>
                                 </div>
                                 <div class="custom-control">
-                                    <input value="3" class="widget-boxs" type="checkbox">
+                                    <input id="xuongrong" value="3" class="widget-boxs" type="checkbox">
                                     <label for="xuongrong">Xương rồng</label>
                                 </div>
                                 <div class="custom-control">
-                                    <input value="4" class="widget-boxs" type="checkbox">
+                                    <input id="senda" value="4" class="widget-boxs" type="checkbox">
                                     <label for="senda">Sen đá</label>
                                 </div>
                                 <div class="custom-control">
-                                    <input value="5" class="widget-boxs" type="checkbox">
-                                    <label for="wedflower">Hoa đám cưới</label>
+                                    <input id="birthflower" value="5" class="widget-boxs" type="checkbox">
+                                    <label for="birthflower">Hoa sinh nhật</label>
                                 </div>
                                 <div class="custom-control">
-                                    <input value="6" class="widget-boxs" type="checkbox">
-                                    <label for="wedflower">Hoa sinh nhật</label>
+                                    <input id="wedflower" value="6" class="widget-boxs" type="checkbox">
+                                    <label for="wedflower">Hoa đám cưới</label>
                                 </div>
                             </div>
                         </div>
